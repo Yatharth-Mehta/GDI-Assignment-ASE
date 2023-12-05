@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.submit = new System.Windows.Forms.Button();
+            this.run = new System.Windows.Forms.Button();
             this.reset = new System.Windows.Forms.Button();
             this.syntax = new System.Windows.Forms.Button();
             this.drawingcanvas = new System.Windows.Forms.PictureBox();
@@ -37,14 +37,15 @@
             ((System.ComponentModel.ISupportInitialize)(this.drawingcanvas)).BeginInit();
             this.SuspendLayout();
             // 
-            // submit
+            // run
             // 
-            this.submit.Location = new System.Drawing.Point(829, 627);
-            this.submit.Name = "submit";
-            this.submit.Size = new System.Drawing.Size(108, 51);
-            this.submit.TabIndex = 0;
-            this.submit.Text = "Submit";
-            this.submit.UseVisualStyleBackColor = true;
+            this.run.Location = new System.Drawing.Point(829, 627);
+            this.run.Name = "run";
+            this.run.Size = new System.Drawing.Size(108, 51);
+            this.run.TabIndex = 0;
+            this.run.Text = "Run";
+            this.run.UseVisualStyleBackColor = true;
+            this.run.Click += new System.EventHandler(this.submit_Click);
             // 
             // reset
             // 
@@ -97,7 +98,7 @@
             this.Controls.Add(this.drawingcanvas);
             this.Controls.Add(this.syntax);
             this.Controls.Add(this.reset);
-            this.Controls.Add(this.submit);
+            this.Controls.Add(this.run);
             this.Name = "Form1";
             this.Text = "Form1";
             ((System.ComponentModel.ISupportInitialize)(this.drawingcanvas)).EndInit();
@@ -108,7 +109,7 @@
 
         #endregion
 
-        private System.Windows.Forms.Button submit;
+        private System.Windows.Forms.Button run;
         private System.Windows.Forms.Button reset;
         private System.Windows.Forms.Button syntax;
         private System.Windows.Forms.PictureBox drawingcanvas;

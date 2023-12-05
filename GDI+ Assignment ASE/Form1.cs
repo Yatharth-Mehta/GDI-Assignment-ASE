@@ -16,5 +16,10 @@ namespace GDI__Assignment_ASE
         {
             InitializeComponent();
         }
+
+        private void submit_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
