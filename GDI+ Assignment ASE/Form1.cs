@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GDI__Assignment_ASE.Properties;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -15,11 +16,24 @@ namespace GDI__Assignment_ASE
         public Form1()
         {
             InitializeComponent();
+           
         }
-
+        
         private void submit_Click(object sender, EventArgs e)
         {
+            if (drawingcanvas.Image == null)
+            {
+                drawingcanvas.Image = new Bitmap(drawingcanvas.Width, drawingcanvas.Height);
+            }
+            var graphics = Graphics.FromImage(drawingcanvas.Image);
+            graphics.Clear(Color.White);
 
+
+            Drawing d = new Drawing();
+            
+            d.draw(graphics,singleline.Text);
+          
+            drawingcanvas.Refresh();
         }
     }
 }
