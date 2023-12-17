@@ -19,6 +19,12 @@ namespace GDI__Assignment_ASE.Properties
             Circle circle = new Circle(25);
             circle.draw(g, pen);
             }
+
+            else if (command == "square" || command  == "rectangle")
+            {
+                rectangle rect = new rectangle(50,50);
+                rect.draw(g, pen);
+            }
         }
     }
 }
