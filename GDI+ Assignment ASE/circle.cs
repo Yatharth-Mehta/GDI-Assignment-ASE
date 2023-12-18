@@ -16,13 +16,13 @@ namespace GDI__Assignment_ASE
             this.radius = radius;
         }
 
-        public void draw(Graphics g, Pen p)
+        public void draw(Graphics g, Pen p,int xpos ,int ypos)
         {
             if (g is null)
             {
                 throw new ArgumentNullException(nameof(g));
             }
-            g.DrawEllipse(p, 0, 0, radius, radius);
+            g.DrawEllipse(p, xpos,ypos, radius, radius);
         }
 
 

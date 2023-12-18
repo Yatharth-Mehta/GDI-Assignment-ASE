@@ -18,13 +18,13 @@ namespace GDI__Assignment_ASE
             this.width = width;
         }
 
-        public void draw(Graphics g, Pen p)
+        public void draw(Graphics g, Pen p , int xpos, int ypos)
         {
             if (g is null)
             {
                 throw new ArgumentNullException(nameof(g));
             }
-            g.DrawRectangle(p, 0, 0, height, width);
+            g.DrawRectangle(p, xpos, ypos, height, width);
         }
 
 

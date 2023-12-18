@@ -30,6 +30,8 @@ namespace GDI__Assignment_ASE.Properties
             commandlist.Add("fill");
 
 
+            int xpos = 0;
+            int ypos = 0;
 
             if (commandlist.Contains(command))
             {
@@ -37,17 +39,19 @@ namespace GDI__Assignment_ASE.Properties
                 {
                     case "circle":
                         Circle c = new Circle(50);
-                        c.draw(g, pen);
+                        c.draw(g, pen,xpos,ypos);
                         break;
 
                     case "rectangle" :
                         rectangle rect = new rectangle(50, 50);
-                        rect.draw(g, pen);
+                        rect.draw(g, pen, xpos, ypos);
                         break;
+
                     case "square":
                         rectangle sq = new rectangle(50, 50);
-                        sq.draw(g, pen);
+                        sq.draw(g, pen, xpos, ypos);
                         break;
+
                     default:
                         break;
                 }
