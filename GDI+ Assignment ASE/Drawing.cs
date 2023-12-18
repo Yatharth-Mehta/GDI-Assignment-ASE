@@ -11,9 +11,11 @@ namespace GDI__Assignment_ASE.Properties
     public class Drawing
     {
 
-        public void draw(Graphics g, String command)
+        public void draw(Graphics g, String cmd)
         {
             Pen pen = new Pen(Color.Red, 2);
+            String command = cmd;
+            command = command.ToLower();
 
             List<string> commandlist = new List<string>();
             commandlist.Add("circle");
@@ -41,6 +43,12 @@ namespace GDI__Assignment_ASE.Properties
                     case "rectangle" :
                         rectangle rect = new rectangle(50, 50);
                         rect.draw(g, pen);
+                        break;
+                    case "square":
+                        rectangle sq = new rectangle(50, 50);
+                        sq.draw(g, pen);
+                        break;
+                    default:
                         break;
                 }
             }

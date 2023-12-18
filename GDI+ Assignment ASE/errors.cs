@@ -11,7 +11,8 @@ namespace GDI__Assignment_ASE
     {
         public errors(Graphics g, Pen p)
         {
-            g.DrawString("Enter a valid command !",default(Font),Brushes.Red,new Point(50,50));
+            Font f = new Font("Arial", 14);
+            g.DrawString("Enter a valid command !",f,Brushes.Red,new Point(50,50));
         }
     }
 }
