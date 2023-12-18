@@ -31,8 +31,8 @@ namespace GDI__Assignment_ASE.Properties
             commandlist.Add("pen");
             commandlist.Add("fill");
 
-            int xpos = 0;
-            int ypos = 0;
+                int xpos = 0;
+                int ypos = 0;
 
             if (commandlist.Contains(split_command[0]))
             {
@@ -51,6 +51,11 @@ namespace GDI__Assignment_ASE.Properties
                     case "square":
                         rectangle sq = new rectangle(int.Parse(split_command[1]), int.Parse(split_command[2]));
                         sq.draw(g, pen, xpos, ypos);
+                        break;
+
+                    case "clear":
+                        clear cl = new clear();
+                        cl.draw(g);
                         break;
 
                     default:
