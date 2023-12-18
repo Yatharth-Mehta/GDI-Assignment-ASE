@@ -34,6 +34,7 @@
             this.drawingcanvas = new System.Windows.Forms.PictureBox();
             this.singleline = new System.Windows.Forms.TextBox();
             this.multiline = new System.Windows.Forms.TextBox();
+            this.errorbox = new System.Windows.Forms.TextBox();
             ((System.ComponentModel.ISupportInitialize)(this.drawingcanvas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -88,11 +89,19 @@
             this.multiline.Size = new System.Drawing.Size(423, 571);
             this.multiline.TabIndex = 5;
             // 
+            // errorbox
+            // 
+            this.errorbox.Location = new System.Drawing.Point(480, 699);
+            this.errorbox.Name = "errorbox";
+            this.errorbox.Size = new System.Drawing.Size(457, 22);
+            this.errorbox.TabIndex = 6;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(962, 742);
+            this.Controls.Add(this.errorbox);
             this.Controls.Add(this.multiline);
             this.Controls.Add(this.singleline);
             this.Controls.Add(this.drawingcanvas);
@@ -115,6 +124,7 @@
         private System.Windows.Forms.PictureBox drawingcanvas;
         private System.Windows.Forms.TextBox singleline;
         private System.Windows.Forms.TextBox multiline;
+        private System.Windows.Forms.TextBox errorbox;
     }
 }
 

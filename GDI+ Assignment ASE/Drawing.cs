@@ -31,14 +31,22 @@ namespace GDI__Assignment_ASE.Properties
 
             if (commandlist.Contains(command))
             {
-                Circle circle = new Circle(25);
-                circle.draw(g, pen);
-            }
+                switch(command)
+                {
+                    case "circle":
+                        Circle c = new Circle(50);
+                        c.draw(g, pen);
+                        break;
 
-            else if (command == "square" || command == "rectangle")
+                    case "rectangle" :
+                        rectangle rect = new rectangle(50, 50);
+                        rect.draw(g, pen);
+                        break;
+                }
+            }
+            else
             {
-                rectangle rect = new rectangle(50, 50);
-                rect.draw(g, pen);
+                errors er = new errors(g,pen);
             }
 
         }
