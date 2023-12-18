@@ -17,6 +17,8 @@ namespace GDI__Assignment_ASE.Properties
             String command = cmd;
             command = command.ToLower();
 
+            String[] split_command = command.Split(' ');
+            
             List<string> commandlist = new List<string>();
             commandlist.Add("circle");
             commandlist.Add("rectangle");
@@ -29,26 +31,25 @@ namespace GDI__Assignment_ASE.Properties
             commandlist.Add("pen");
             commandlist.Add("fill");
 
-
             int xpos = 0;
             int ypos = 0;
 
-            if (commandlist.Contains(command))
+            if (commandlist.Contains(split_command[0]))
             {
-                switch(command)
+                switch(split_command[0])
                 {
-                    case "circle":
-                        Circle c = new Circle(50);
-                        c.draw(g, pen,xpos,ypos);
+                    case "circle":                               
+                            Circle c = new Circle(int.Parse(split_command[1]));
+                            c.draw(g, pen, xpos, ypos);
                         break;
 
                     case "rectangle" :
-                        rectangle rect = new rectangle(50, 50);
+                        rectangle rect = new rectangle(int.Parse(split_command[1]), int.Parse(split_command[2]));
                         rect.draw(g, pen, xpos, ypos);
                         break;
 
                     case "square":
-                        rectangle sq = new rectangle(50, 50);
+                        rectangle sq = new rectangle(int.Parse(split_command[1]), int.Parse(split_command[2]));
                         sq.draw(g, pen, xpos, ypos);
                         break;
 
