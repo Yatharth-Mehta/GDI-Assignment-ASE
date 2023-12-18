@@ -53,6 +53,10 @@ namespace GDI__Assignment_ASE.Properties
                         sq.draw(g, pen, xpos, ypos);
                         break;
 
+                    case "triangle":
+                        triangle tr = new triangle(g, pen);
+                        break;
+
                     case "clear":
                         clear cl = new clear();
                         cl.draw(g);
