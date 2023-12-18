@@ -16,7 +16,6 @@ namespace GDI__Assignment_ASE
         public Form1()
         {
             InitializeComponent();
-           
         }
         
         private void submit_Click(object sender, EventArgs e)
