@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GDI__Assignment_ASE.Properties;
+using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;

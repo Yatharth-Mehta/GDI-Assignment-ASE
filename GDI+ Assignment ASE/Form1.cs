@@ -25,14 +25,26 @@ namespace GDI__Assignment_ASE
                 drawingcanvas.Image = new Bitmap(drawingcanvas.Width, drawingcanvas.Height);
             }
             var graphics = Graphics.FromImage(drawingcanvas.Image);
-            graphics.Clear(Color.White);
+ //           graphics.Clear(Color.White);
+
+            Drawing d = new Drawing(graphics);
+
+            d.draw(singleline.Text);
+
+           /* String command = singleline.Text.ToLower();
 
 
-            Drawing d = new Drawing();
+                if (command == "drawto")
+                {
+                    d.drawto(150 , 40);
+                }
+                else if (command == "rectangle")
+                {
+                    d.rectangle(80 ,80);
+                }*/
+
             
-            d.draw(graphics,singleline.Text);
-          
-            drawingcanvas.Refresh();
+        Refresh();
         }
     }
 }
