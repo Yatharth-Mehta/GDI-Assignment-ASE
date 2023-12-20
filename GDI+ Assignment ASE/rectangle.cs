@@ -27,6 +27,15 @@ namespace GDI__Assignment_ASE
             g.DrawRectangle(p, xpos, ypos, height, width);
         }
 
+        public void drawfill(Graphics g, Brush brush, int xpos, int ypos)
+        {
+            if (g is null)
+            {
+                throw new ArgumentNullException(nameof(g));
+            }
+            g.FillRectangle(brush, xpos, ypos, height, width);
+        }
+
 
     }
 }

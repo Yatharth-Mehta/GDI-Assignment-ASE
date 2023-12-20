@@ -25,6 +25,14 @@ namespace GDI__Assignment_ASE
             }
             g.DrawEllipse(p, xpos,ypos, radius, radius);
         }
+        public void drawfill(Graphics g, Brush brush, int xpos, int ypos)
+        {
+            if (g is null)
+            {
+                throw new ArgumentNullException(nameof(g));
+            }
+            g.FillEllipse(brush, xpos, ypos, radius,radius);
+        }
 
 
     }

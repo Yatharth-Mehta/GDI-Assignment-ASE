@@ -11,7 +11,7 @@ using System.Windows.Forms;
 
 namespace GDI__Assignment_ASE
 {
-    public partial class Form1 : Form
+    public partial class Form1 : Form 
     {
         public Form1()
         {
@@ -25,26 +25,28 @@ namespace GDI__Assignment_ASE
                 drawingcanvas.Image = new Bitmap(drawingcanvas.Width, drawingcanvas.Height);
             }
             var graphics = Graphics.FromImage(drawingcanvas.Image);
- //           graphics.Clear(Color.White);
 
-            Drawing d = new Drawing(graphics);
-
-            d.draw(singleline.Text);
-
-           /* String command = singleline.Text.ToLower();
-
-
-                if (command == "drawto")
-                {
-                    d.drawto(150 , 40);
-                }
-                else if (command == "rectangle")
-                {
-                    d.rectangle(80 ,80);
-                }*/
-
+            fill fv = new fill();            
+            fv.fillvalue = fillvalue.Text;
             
-        Refresh();
+            Drawing d = new Drawing();    
+            d.draw(graphics, singleline.Text, fv.fillvalue);
+
+            Refresh();
         }
     }
 }
+
+
+            /* String command = singleline.Text.ToLower();
+           // graphics.Clear(Color.White);
+
+
+                 if (command == "drawto")
+                 {
+                     d.drawto(150 , 40);
+                 }
+                 else if (command == "rectangle")
+                 {
+                     d.rectangle(80 ,80);
+                 }*/
