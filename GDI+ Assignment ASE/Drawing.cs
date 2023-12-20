@@ -107,11 +107,9 @@ namespace GDI__Assignment_ASE.Properties
                             break;
 
                         case "drawto":
-                            int targetX = int.Parse(split_command[1]);
-                            int targetY = int.Parse(split_command[2]);
-
-                            // Draw a line from current position to the target position
-                            g.DrawLine(pen, xpos, ypos, targetX, targetY);
+                            int X = int.Parse(split_command[1]);
+                            int Y = int.Parse(split_command[2]);
+                            g.DrawLine(pen, xpos, ypos, X, Y);
                             xpos = int.Parse(split_command[1]);
                             ypos = int.Parse(split_command[2]);
 

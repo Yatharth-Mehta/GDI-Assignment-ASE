@@ -49,7 +49,6 @@
     <Compile Include="circle.cs" />
     <Compile Include="clear.cs" />
     <Compile Include="Drawing.cs" />
-    <Compile Include="drawto.cs" />
     <Compile Include="errors.cs" />
     <Compile Include="fill.cs" />
     <Compile Include="Form1.cs">
