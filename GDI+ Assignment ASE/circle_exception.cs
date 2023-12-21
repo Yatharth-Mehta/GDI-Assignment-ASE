@@ -12,7 +12,7 @@ namespace GDI__Assignment_ASE
         public circle_exception(Graphics g)
         {
             Font f = new Font("Arial", 14);
-            g.DrawString("Give Radius to circle !", f, Brushes.Red, new Point(50, 50));
+            g.DrawString("Give proper parameters to circle !", f, Brushes.Red, new Point(50, 50));
         }
     }
 }

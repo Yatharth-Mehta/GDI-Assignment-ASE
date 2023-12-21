@@ -43,7 +43,7 @@ namespace GDI__Assignment_ASE
 
             var g = Graphics.FromImage(drawingcanvas.Image);
             cmdline = cmdline.ToLower().Trim();
-            //String[] split_command = cmdline.Split(' ');
+            String[] split_command = cmdline.Split(' ');
             try
             {
                 if (cmdline == "")
@@ -61,6 +61,10 @@ namespace GDI__Assignment_ASE
                 else if (cmdline == "rectangle")
                 {
                     throw new rectangle_sqaure_exception(g);
+                }
+                else if (split_command[0]=="circle" && split_command[2] != null)
+                {
+                    throw new circle_exception(g);
                 }
                 else
                 {

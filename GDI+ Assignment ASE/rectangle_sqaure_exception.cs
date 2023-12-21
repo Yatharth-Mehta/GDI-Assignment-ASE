@@ -12,7 +12,7 @@ namespace GDI__Assignment_ASE
         public rectangle_sqaure_exception(Graphics g)
         {
             Font f = new Font("Arial", 14);
-            g.DrawString("Give Height and Width to Rectangle !", f, Brushes.Red, new Point(50, 50));
+            g.DrawString("Give proper parameters\nto Rectangle !", f, Brushes.Red, new Point(50, 50));
         }
     }
 }
