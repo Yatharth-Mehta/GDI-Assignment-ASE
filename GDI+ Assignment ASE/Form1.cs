@@ -66,6 +66,14 @@ namespace GDI__Assignment_ASE
                 {
                     throw new circle_exception(g);
                 }
+                else if (split_command[0] == "square" && split_command[3] != null)
+                {
+                    throw new rectangle_sqaure_exception(g);
+                }
+                else if (split_command[0] == "rectangle" && split_command[3] != null)
+                {
+                    throw new rectangle_sqaure_exception(g);
+                }
                 else
                 {
                     Font f = new Font("Arial", 14);
