@@ -50,56 +50,57 @@ namespace GDI__Assignment_ASE.Properties
                         fillEnabled = false;
                     }*/
                 }
-                switch (split_command[0])
+                
+                    switch (split_command[0])
                     {
                         case "circle":
                             Circle c = new Circle(int.Parse(split_command[1]));
-                        if (fillvalue == "on")
-                        {
-                            c.drawfill(g, brush, xpos, ypos);
-                        }
-                        else
-                        {
-                            c.draw(g, pen, xpos, ypos);
-                        }
-                        break;
+                            if (fillvalue == "on")
+                            {
+                                c.drawfill(g, brush, xpos, ypos);
+                            }
+                            else
+                            {
+                                c.draw(g, pen, xpos, ypos);
+                            }
+                            break;
 
                         case "rectangle":
                             rectangle rect = new rectangle(int.Parse(split_command[1]), int.Parse(split_command[2]));
 
-                        if (fillvalue == "on")
-                        {
-                            rect.drawfill(g, brush, xpos, ypos);
-                        }
-                        else
-                        {
-                            rect.draw(g, pen, xpos, ypos);
-                        }
-                        break;
+                            if (fillvalue == "on")
+                            {
+                                rect.drawfill(g, brush, xpos, ypos);
+                            }
+                            else
+                            {
+                                rect.draw(g, pen, xpos, ypos);
+                            }
+                            break;
 
                         case "square":
                             rectangle sq = new rectangle(int.Parse(split_command[1]), int.Parse(split_command[2]));
-                        if (fillvalue == "on")
-                        {
-                            sq.drawfill(g, brush, xpos, ypos);
-                        }
-                        else
-                        {
-                            sq.draw(g, pen, xpos, ypos);
-                        }
-                        break;
+                            if (fillvalue == "on")
+                            {
+                                sq.drawfill(g, brush, xpos, ypos);
+                            }
+                            else
+                            {
+                                sq.draw(g, pen, xpos, ypos);
+                            }
+                            break;
 
                         case "triangle":
                             triangle tr = new triangle(g, pen);
-                        if (fillvalue == "on")
-                        {
-                            tr.drawfill(g, brush, xpos, ypos);
-                        }
-                        else
-                        {
-                            tr.draw(g, pen, xpos, ypos);
-                        }
-                        break;
+                            if (fillvalue == "on")
+                            {
+                                tr.drawfill(g, brush, xpos, ypos);
+                            }
+                            else
+                            {
+                                tr.draw(g, pen, xpos, ypos);
+                            }
+                            break;
 
                         case "clear":
                             clear cl = new clear();
@@ -117,13 +118,20 @@ namespace GDI__Assignment_ASE.Properties
                         default:
                             break;
                     }
+
+                }
                 
-            }
+                
             else
             {
-                throw new Not_a_valid_command_exception(g);
-            }
+                try
+                {
 
+                    throw new Not_a_valid_command_exception(g);
+                }
+                catch { }
+            }
+            
         }
 
     }
