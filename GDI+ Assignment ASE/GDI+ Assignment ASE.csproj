@@ -48,6 +48,7 @@
   <ItemGroup>
     <Compile Include="circle.cs" />
     <Compile Include="clear.cs" />
+    <Compile Include="cmdline_empty_exception.cs" />
     <Compile Include="Drawing.cs" />
     <Compile Include="errors.cs" />
     <Compile Include="fill.cs" />

@@ -69,6 +69,7 @@
             this.syntax.TabIndex = 2;
             this.syntax.Text = "Syntax";
             this.syntax.UseVisualStyleBackColor = true;
+            this.syntax.Click += new System.EventHandler(this.syntax_Click);
             // 
             // drawingcanvas
             // 
