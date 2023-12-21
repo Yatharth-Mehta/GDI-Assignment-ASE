@@ -52,8 +52,7 @@ namespace GDI__Assignment_ASE
                 }
                 if (cmdline == "circle")
                 {
-                    Font f = new Font("Arial", 14);
-                    g.DrawString("Give Radius to circle !", f, Brushes.Red, new Point(50, 50));
+                    throw new circle_exception(g);
                 }
                 if (cmdline == "square")
                 {
