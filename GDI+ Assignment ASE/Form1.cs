@@ -74,6 +74,10 @@ namespace GDI__Assignment_ASE
                 {
                     throw new rectangle_sqaure_exception(g);
                 }
+                else if (split_command[0] == "triangle" && split_command[1] !=null)
+                {
+                    throw new triangle_exception(g);
+                }
                 else
                 {
                     Font f = new Font("Arial", 14);

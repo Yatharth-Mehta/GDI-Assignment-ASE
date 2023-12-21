@@ -64,6 +64,7 @@
     <Compile Include="rectangle.cs" />
     <Compile Include="rectangle_sqaure_exception.cs" />
     <Compile Include="triangle.cs" />
+    <Compile Include="triangle_exception.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
