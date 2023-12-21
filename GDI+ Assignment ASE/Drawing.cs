@@ -33,8 +33,6 @@ namespace GDI__Assignment_ASE.Properties
             commandlist.Add("drawto");
             commandlist.Add("clear");
             commandlist.Add("reset");
-            commandlist.Add("pen");
-            commandlist.Add("fill");
 
             if (commandlist.Contains(split_command[0]))
             {

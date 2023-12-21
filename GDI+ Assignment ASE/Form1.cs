@@ -44,6 +44,17 @@ namespace GDI__Assignment_ASE
             var g = Graphics.FromImage(drawingcanvas.Image);
             cmdline = cmdline.ToLower().Trim();
             String[] split_command = cmdline.Split(' ');
+
+            List<string> commandlist = new List<string>();
+            commandlist.Add("circle");
+            commandlist.Add("rectangle");
+            commandlist.Add("triangle");
+            commandlist.Add("square");
+            commandlist.Add("moveto");
+            commandlist.Add("drawto");
+            commandlist.Add("clear");
+            commandlist.Add("reset");
+
             try
             {
                 if (cmdline == "")
