@@ -121,7 +121,7 @@ namespace GDI__Assignment_ASE.Properties
             }
             else
             {
-                errors er = new errors(g, pen);
+                throw new Not_a_valid_command_exception(g);
             }
 
         }

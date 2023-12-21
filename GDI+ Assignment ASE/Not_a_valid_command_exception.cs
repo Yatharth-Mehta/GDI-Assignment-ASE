@@ -7,12 +7,12 @@ using System.Threading.Tasks;
 
 namespace GDI__Assignment_ASE
 {
-    public class errors
+    public class Not_a_valid_command_exception : Exception
     {
-        public errors(Graphics g, Pen p)
+        public Not_a_valid_command_exception(Graphics g)
         {
             Font f = new Font("Arial", 14);
-            g.DrawString("Enter a valid command !",f,Brushes.Red,new Point(50,50));
+            g.DrawString("Enter a valid command !", f, Brushes.Red, new Point(50, 50));
         }
     }
 }
