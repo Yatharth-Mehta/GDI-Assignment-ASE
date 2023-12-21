@@ -50,22 +50,28 @@ namespace GDI__Assignment_ASE
                 {
                     throw new cmdline_empty_exception(g);
                 }
-                if (cmdline == "circle")
+                else if (cmdline == "circle")
                 {
                     throw new circle_exception(g);
                 }
-                if (cmdline == "square")
+                else if (cmdline == "square")
                 {
-                    Font f = new Font("Arial", 14);
-                    g.DrawString("Give Height and Width to Square !", f, Brushes.Red, new Point(50, 50));
+                    throw new rectangle_sqaure_exception(g);
                 }
-                if (cmdline == "rectangle")
+                else if (cmdline == "rectangle")
+                {
+                    throw new rectangle_sqaure_exception(g);
+                }
+                else
                 {
                     Font f = new Font("Arial", 14);
-                    g.DrawString("Give Height and Width to Rectangle !", f, Brushes.Red, new Point(50, 50));
+                    g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(50, 50));
                 }
             }
-            catch { }
+            catch
+            {
+                
+            }
            
         }
     }
