@@ -65,51 +65,23 @@ namespace GDI__Assignment_ASE
                     {
                         throw new cmdline_empty_exception(g);
                     }
-                    else
-                    {
-                        Font f = new Font("Arial", 14);
-                        g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(50, 50));
-                    }
 
-                    if (cmdline == "circle")
+                    if (split_command[0] == "circle")
                     {
-                        throw new circle_exception(g);
-                    }
-                    else
-                    {
-                        Font f = new Font("Arial", 14);
-                        g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(50, 50));
-                    }
+                        String extra = split_command[2];
+                        if (cmdline != "circle")
+                        {
+                                Font f = new Font("Arial", 14);
+                                g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(5, 50));
+                        }
+                        else
+                        {
+                            throw new circle_exception(g);
+                        }
 
-                    if (cmdline == "square")
-                    {
-                        throw new rectangle_sqaure_exception(g);
+                        
                     }
-                    else
-                    {
-                        Font f = new Font("Arial", 14);
-                        g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(50, 50));
-                    }
-
-                    if (cmdline == "rectangle")
-                    {
-                        throw new rectangle_sqaure_exception(g);
-                    }
-                    else
-                    {
-                        Font f = new Font("Arial", 14);
-                        g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(50, 50));
-                    }
-
-                    if (split_command[0] == "circle" && split_command[2] != null)
-                    {
-                        throw new circle_exception(g);
-                    }
-                    else
-                    {
-                        Font f = new Font("Arial", 14);
-                        g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(50, 50));
-                    }
+                    
 
                     if (split_command[0] == "square" && split_command[3] != null)
                     {
