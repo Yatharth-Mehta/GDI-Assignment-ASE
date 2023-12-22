@@ -145,6 +145,11 @@ namespace GDI__Assignment_ASE
             }
            
         }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
 
