@@ -32,7 +32,6 @@ namespace GDI__Assignment_ASE.Properties
             commandlist.Add("moveto");
             commandlist.Add("drawto");
             commandlist.Add("clear");
-            commandlist.Add("reset");
 
             if (commandlist.Contains(split_command[0]))
             {
@@ -126,7 +125,6 @@ namespace GDI__Assignment_ASE.Properties
             {
                 try
                 {
-
                     throw new Not_a_valid_command_exception(g);
                 }
                 catch { }
