@@ -113,7 +113,9 @@ namespace GDI__Assignment_ASE.Properties
                             ypos = int.Parse(split_command[2]);
 
                             break;
-                        default:
+
+                        
+                    default:
                             break;
                     }
 

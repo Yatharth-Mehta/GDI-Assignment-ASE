@@ -38,6 +38,8 @@
             this.label1 = new System.Windows.Forms.Label();
             this.openfile = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
+            this.savebutton = new System.Windows.Forms.Button();
+            this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.drawingcanvas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -132,11 +134,23 @@
             // 
             this.openFileDialog1.FileName = "openFileDialog1";
             // 
+            // savebutton
+            // 
+            this.savebutton.Location = new System.Drawing.Point(163, 626);
+            this.savebutton.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.savebutton.Name = "savebutton";
+            this.savebutton.Size = new System.Drawing.Size(108, 50);
+            this.savebutton.TabIndex = 9;
+            this.savebutton.Text = "Save File";
+            this.savebutton.UseVisualStyleBackColor = true;
+            this.savebutton.Click += new System.EventHandler(this.savebutton_Click);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(963, 742);
+            this.Controls.Add(this.savebutton);
             this.Controls.Add(this.openfile);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.fillvalue);
@@ -168,6 +182,8 @@
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button openfile;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
+        private System.Windows.Forms.Button savebutton;
+        private System.Windows.Forms.SaveFileDialog saveFileDialog1;
     }
 }
 

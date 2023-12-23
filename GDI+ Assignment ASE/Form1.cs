@@ -30,9 +30,41 @@ namespace GDI__Assignment_ASE
 
             fill fv = new fill();
             fv.fillvalue = fillvalue.Text;
-
             Drawing d = new Drawing();
-            d.draw(graphics, singleline.Text, fv.fillvalue);
+
+            if (singleline.Text.Equals("reset"))
+            {
+                reset r = new reset(singleline.Text, multiline.Text);
+                singleline.Text = r.do_reset();
+                multiline.Text = r.do_reset();
+                fillvalue.Text = r.do_reset();
+                graphics.Clear(Color.White);
+            }
+            else
+            {
+                if (multiline.Text != "")
+                {
+                    if (singleline.Text.Equals("run"))
+                    {
+
+                        String multi = multiline.Text;
+                        String[] split_command = multi.Split('\n');
+                        foreach (String i in split_command)
+                        {
+                            d.draw(graphics, i, fv.fillvalue);
+                        }
+                    }
+                    else
+                    {
+                        Font f = new Font("Arial", 14);
+                        graphics.DrawString("Enter Run in command line", f, Brushes.Red, new Point(50, 50));
+                    }
+                }
+                else
+                {
+                    d.draw(graphics, singleline.Text, fv.fillvalue);
+                }
+            }
 
             Refresh();
         }
@@ -161,6 +193,17 @@ namespace GDI__Assignment_ASE
                 var data = File.ReadAllText(file);
                 multiline.Text = data;
 
+            }
+        }
+
+        private void savebutton_Click(object sender, EventArgs e)
+        {
+            if (saveFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                StreamWriter file = new StreamWriter(saveFileDialog1.FileName);
+                file.Write(multiline.Text);
+                //multiline.Text = file;
+                file.Close();
             }
         }
     }
