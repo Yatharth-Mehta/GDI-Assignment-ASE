@@ -111,8 +111,6 @@ namespace GDI__Assignment_ASE
                         {
                             throw new circle_exception(g);
                         }
-
-                        
                     }
                     
 
