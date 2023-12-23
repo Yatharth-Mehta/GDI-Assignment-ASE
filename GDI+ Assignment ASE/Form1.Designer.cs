@@ -36,7 +36,8 @@
             this.multiline = new System.Windows.Forms.TextBox();
             this.fillvalue = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
+            this.openfile = new System.Windows.Forms.Button();
+            this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.drawingcanvas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -116,22 +117,27 @@
             this.label1.TabIndex = 7;
             this.label1.Text = "FILL VALUE";
             // 
-            // button1
+            // openfile
             // 
-            this.button1.Location = new System.Drawing.Point(29, 626);
-            this.button1.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(108, 50);
-            this.button1.TabIndex = 8;
-            this.button1.Text = "Open File";
-            this.button1.UseVisualStyleBackColor = true;
+            this.openfile.Location = new System.Drawing.Point(29, 626);
+            this.openfile.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.openfile.Name = "openfile";
+            this.openfile.Size = new System.Drawing.Size(108, 50);
+            this.openfile.TabIndex = 8;
+            this.openfile.Text = "Open File";
+            this.openfile.UseVisualStyleBackColor = true;
+            this.openfile.Click += new System.EventHandler(this.openfile_Click);
+            // 
+            // openFileDialog1
+            // 
+            this.openFileDialog1.FileName = "openFileDialog1";
             // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(963, 742);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.openfile);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.fillvalue);
             this.Controls.Add(this.multiline);
@@ -160,7 +166,8 @@
         private System.Windows.Forms.TextBox multiline;
         private System.Windows.Forms.TextBox fillvalue;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button openfile;
+        private System.Windows.Forms.OpenFileDialog openFileDialog1;
     }
 }
 

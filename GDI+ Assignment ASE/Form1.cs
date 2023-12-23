@@ -150,6 +150,15 @@ namespace GDI__Assignment_ASE
         {
 
         }
+
+        private void openfile_Click(object sender, EventArgs e)
+        {
+            if (openFileDialog1.ShowDialog() == DialogResult.OK)
+            {
+                String file = openFileDialog1.FileName;
+                multiline.Text = file;
+            }
+        }
     }
 }
 
