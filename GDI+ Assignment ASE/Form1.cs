@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.IO;
 
 namespace GDI__Assignment_ASE
 {
@@ -156,7 +157,10 @@ namespace GDI__Assignment_ASE
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 String file = openFileDialog1.FileName;
-                multiline.Text = file;
+                //multiline.Text = file;
+                var data = File.ReadAllText(file);
+                multiline.Text = data;
+
             }
         }
     }
