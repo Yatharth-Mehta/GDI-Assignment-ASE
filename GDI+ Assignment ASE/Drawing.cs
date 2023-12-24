@@ -35,18 +35,6 @@ namespace GDI__Assignment_ASE.Properties
 
             if (commandlist.Contains(split_command[0]))
             {
-                if (split_command[0] == "fill")
-                {
-                    // Set the fill flag based on the provided value
-                    /*if (split_command[1] == "on")
-                    {
-                        fillEnabled = true;
-                    }
-                    else
-                    {
-                        fillEnabled = false;
-                    }*/
-                }
                 
                     switch (split_command[0])
                     {
