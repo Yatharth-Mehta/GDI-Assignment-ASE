@@ -49,6 +49,7 @@
     <Compile Include="circle.cs" />
     <Compile Include="circle_exception.cs" />
     <Compile Include="clear.cs" />
+    <Compile Include="clear_exception.cs" />
     <Compile Include="cmdline_empty_exception.cs" />
     <Compile Include="Drawing.cs" />
     <Compile Include="fill.cs" />
@@ -64,6 +65,7 @@
     <Compile Include="rectangle.cs" />
     <Compile Include="rectangle_sqaure_exception.cs" />
     <Compile Include="reset.cs" />
+    <Compile Include="reset_exception.cs" />
     <Compile Include="triangle.cs" />
     <Compile Include="triangle_exception.cs" />
     <EmbeddedResource Include="Form1.resx">

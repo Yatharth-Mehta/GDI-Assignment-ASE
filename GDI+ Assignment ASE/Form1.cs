@@ -130,10 +130,10 @@ namespace GDI__Assignment_ASE
                     }
 
                     
-                    if (cmdline == "triangle")
+                    if (split_command[0]  == "triangle")
                     {
                         int total_ele = split_command.Count();
-                        if (total_ele < 2)
+                        if (total_ele == 1)
                         {
                             Font f = new Font("Arial", 14);
                             g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(50, 50));
@@ -145,32 +145,32 @@ namespace GDI__Assignment_ASE
                     }
 
 
-                    if (cmdline == "clear")
+                    if (split_command[0] == "clear")
                     {
                         int total_ele = split_command.Count();
-                        if (total_ele < 2)
+                        if (total_ele == 1)
                         {
                             Font f = new Font("Arial", 14);
                             g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(50, 50));
                         }
                         else
                         {
-                            throw new Not_a_valid_command_exception(g);
+                            throw new clear_exception(g);
                         }
                     }
 
 
-                    if (cmdline == "reset")
+                    if (split_command[0] == "reset")
                     {
                         int total_ele = split_command.Count();
-                        if (total_ele < 2)
+                        if (total_ele == 1)
                         {
                             Font f = new Font("Arial", 14);
                             g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(50, 50));
                         }
                         else
                         {
-                            throw new Not_a_valid_command_exception(g);
+                            throw new reset_exception(g);
                         }
                     }
                 }
