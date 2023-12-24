@@ -71,13 +71,14 @@ namespace GDI__Assignment_ASE
 
         private void syntax_Click(object sender, EventArgs e)
         {
-            String cmdline = singleline.Text;
 
             drawingcanvas.Image = new Bitmap(drawingcanvas.Width, drawingcanvas.Height);
 
             var g = Graphics.FromImage(drawingcanvas.Image);
             g.Clear(Color.White);
-            cmdline = cmdline.ToLower().Trim();
+
+            String cmdline = singleline.Text;
+            cmdline = cmdline.ToLower();
             String[] split_command = cmdline.Split(' ');
 
             List<string> commandlist = new List<string>();
@@ -101,68 +102,76 @@ namespace GDI__Assignment_ASE
 
                     if (split_command[0] == "circle")
                     {
-                        String extra = split_command[2];
-                        if (cmdline != "circle")
+                        int total_ele = split_command.Count(); 
+                        if (total_ele == 2 && int.TryParse(split_command[1],out _))
                         {
-                                Font f = new Font("Arial", 14);
-                                g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(5, 50));
+                            Font f = new Font("Arial", 14);
+                            g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(50, 50));
                         }
                         else
                         {
                             throw new circle_exception(g);
                         }
                     }
+
+
+                    if (split_command[0] == "rectangle" || split_command[0] == "sqaure")
+                    {
+                        int total_ele = split_command.Count();
+                        if (total_ele == 3 && int.TryParse(split_command[1], out _) && int.TryParse(split_command[2], out _))
+                        {
+                            Font f = new Font("Arial", 14);
+                            g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(50, 50));
+                        }
+                        else
+                        {
+                            throw new rectangle_sqaure_exception(g);
+                        }
+                    }
+
                     
-
-                    if (split_command[0] == "square" && split_command[3] != null)
+                    if (cmdline == "triangle")
                     {
-                        throw new rectangle_sqaure_exception(g);
-                    }
-                    else
-                    {
-                        Font f = new Font("Arial", 14);
-                        g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(50, 50));
-                    }
-
-                    if (split_command[0] == "rectangle" && split_command[3] != null)
-                    {
-                        throw new rectangle_sqaure_exception(g);
-                    }
-                    else
-                    {
-                        Font f = new Font("Arial", 14);
-                        g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(50, 50));
-                    }
-
-                    if (split_command[0] == "triangle" && split_command[1] != null)
-                    {
-                        throw new triangle_exception(g);
-                    }
-                    else
-                    {
-                        Font f = new Font("Arial", 14);
-                        g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(50, 50));
+                        int total_ele = split_command.Count();
+                        if (total_ele < 2)
+                        {
+                            Font f = new Font("Arial", 14);
+                            g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(50, 50));
+                        }
+                        else
+                        {
+                            throw new triangle_exception(g);
+                        }
                     }
 
 
-                    if (split_command[0] == "clear" && split_command[1] != null)
+                    if (cmdline == "clear")
                     {
-                        throw new Not_a_valid_command_exception(g);
-                    }
-                    else
-                    {
-                        Font f = new Font("Arial", 14);
-                        g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(50, 50));
+                        int total_ele = split_command.Count();
+                        if (total_ele < 2)
+                        {
+                            Font f = new Font("Arial", 14);
+                            g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(50, 50));
+                        }
+                        else
+                        {
+                            throw new Not_a_valid_command_exception(g);
+                        }
                     }
 
-                    if (split_command[0] == "reset" && split_command[1] != null)
+
+                    if (cmdline == "reset")
                     {
-                        throw new Not_a_valid_command_exception(g);
-                    }
-                    else
-                    {
-                        Font f = new Font("Arial", 14);
-                        g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(50, 50));
+                        int total_ele = split_command.Count();
+                        if (total_ele < 2)
+                        {
+                            Font f = new Font("Arial", 14);
+                            g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(50, 50));
+                        }
+                        else
+                        {
+                            throw new Not_a_valid_command_exception(g);
+                        }
                     }
                 }
                 else
