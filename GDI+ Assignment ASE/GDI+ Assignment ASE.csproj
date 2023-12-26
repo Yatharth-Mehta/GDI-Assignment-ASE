@@ -51,6 +51,7 @@
     <Compile Include="clear.cs" />
     <Compile Include="clear_exception.cs" />
     <Compile Include="cmdline_empty_exception.cs" />
+    <Compile Include="multiline.cs" />
     <Compile Include="Drawing.cs" />
     <Compile Include="fill.cs" />
     <Compile Include="Form1.cs">

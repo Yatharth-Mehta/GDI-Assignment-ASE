@@ -47,12 +47,14 @@ namespace GDI__Assignment_ASE
                     if (singleline.Text.Equals("run"))
                     {
 
-                        String multi = multiline.Text;
+                        multiline cpl = new multiline(multiline.Text, graphics,fv.fillvalue);
+                        cpl.variables();
+                        /*String multi = multiline.Text;
                         String[] split_command = multi.Split('\n');
                         foreach (String i in split_command)
                         {
                             d.draw(graphics, i, fv.fillvalue);
-                        }
+                        }*/
                     }
                     else
                     {
@@ -90,10 +92,10 @@ namespace GDI__Assignment_ASE
                         sc.check(i, g);
                     }
                 }
-                else
-                {
-                    sc.check(singleline.Text, g);
-                }
+            }
+            else
+            {
+                sc.check(singleline.Text, g);
             }
         }
         private void Form1_Load(object sender, EventArgs e)
