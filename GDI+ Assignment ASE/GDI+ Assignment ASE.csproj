@@ -71,6 +71,7 @@
     <Compile Include="syntax_checking.cs" />
     <Compile Include="triangle.cs" />
     <Compile Include="triangle_exception.cs" />
+    <Compile Include="variables_operation.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>

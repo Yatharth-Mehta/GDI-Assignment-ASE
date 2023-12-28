@@ -13,8 +13,8 @@ namespace GDI__Assignment_ASE
     {
         String code;
         String fillvalue;
-        public String[] vars = { "a", "b", "c" };
-        public String[] values = { "a", "b", "c" };
+        List<string>vars = new List<string>();
+        List<string>values = new List<string>();
         Graphics g;
 
         public multiline(String code, Graphics g, String filvalue)
@@ -55,7 +55,7 @@ namespace GDI__Assignment_ASE
                             }
                             else if (vars.Contains(split_command[1]))
                             {
-                                int element = Array.IndexOf(vars, split_command[1]);
+                                int element = vars.IndexOf(split_command[1]);
                                 String circle_command = split_command[0] + " " + values[element];
                                 Drawing d = new Drawing();
                                 d.draw(g, circle_command, fillvalue);
@@ -70,8 +70,8 @@ namespace GDI__Assignment_ASE
                             }
                             else if (vars.Contains(split_command[1]) && vars.Contains(split_command[2]))
                             {
-                                int element = Array.IndexOf(vars, split_command[1]);
-                                int element2 = Array.IndexOf(vars, split_command[2]);
+                                int element = vars.IndexOf(split_command[1]);
+                                int element2 = vars.IndexOf(split_command[2]);
                                 String rect_command = split_command[0] + " " + values[element] + " " + values[element2];
                                 Drawing d = new Drawing();
                                 d.draw(g, rect_command, fillvalue);
@@ -86,8 +86,8 @@ namespace GDI__Assignment_ASE
                             }
                             else if (vars.Contains(split_command[1]) && vars.Contains(split_command[2]))
                             {
-                                int element = Array.IndexOf(vars, split_command[1]);
-                                int element2 = Array.IndexOf(vars, split_command[2]);
+                                int element = vars.IndexOf(split_command[1]);
+                                int element2 = vars.IndexOf(split_command[2]);
                                 String square_command = split_command[0] + " " + values[element] + " " + values[element2];
                                 Drawing d = new Drawing();
                                 d.draw(g, square_command, fillvalue);
@@ -110,8 +110,8 @@ namespace GDI__Assignment_ASE
                             }
                             else if (vars.Contains(split_command[1]) && vars.Contains(split_command[2]))
                             {
-                                int element = Array.IndexOf(vars, split_command[1]);
-                                int element2 = Array.IndexOf(vars, split_command[2]);
+                                int element = vars.IndexOf(split_command[1]);
+                                int element2 = vars.IndexOf(split_command[2]);
                                 String drawto = split_command[0] + " " + values[element] + " " + values[element2];
                                 Drawing d = new Drawing();
                                 d.draw(g, drawto, fillvalue);
@@ -124,18 +124,15 @@ namespace GDI__Assignment_ASE
 
                 if (split_command.Contains("="))
                 {
-                    int element = Array.IndexOf(vars, split_command[0]);
-                    if (element >= 0)
-                    {
-                        vars[element] = split_command[0];
-                        values[element] = split_command[2];
-                    }
+                        vars.Add(split_command[0]);
+                        values.Add(split_command[2]);
+                    
                 }
                 else if (split_command[0].Equals("print"))
                 {
                     if (split_command.Length == 2 && vars.Contains(split_command[1]))
                     {
-                        int element = Array.IndexOf(vars, split_command[1]);
+                        int element = vars.IndexOf(split_command[1]);
                         if (element >= 0)
                         {
                             Font f = new Font("Arial", 14);
@@ -144,8 +141,8 @@ namespace GDI__Assignment_ASE
                     }
                     else if (split_command.Length == 4 && vars.Contains(split_command[1]) && vars.Contains(split_command[3]) && (split_command[2] == "+" || split_command[2] == "-" || split_command[2] == "*" || split_command[2] == "/"))
                     {
-                        int variable1 = Array.IndexOf(vars, split_command[1]);
-                        int variable2 = Array.IndexOf(vars, split_command[3]);
+                        int variable1 = vars.IndexOf(split_command[1]);
+                        int variable2 = vars.IndexOf(split_command[3]);
                         int value1 = int.Parse(values[variable1]);
                         int value2 = int.Parse(values[variable2]);
 
@@ -175,8 +172,14 @@ namespace GDI__Assignment_ASE
                         }
                     }
                 }
-                
-               
+
+                if (vars.Contains(split_command[0]) && split_command[1] == "="  && (split_command[2] == split_command[0]))
+                {
+                  
+                    variables_operation vo = new variables_operation(values,vars);
+                    int element = vars.IndexOf(split_command[2]);
+                    values[element] = vo.new_value(lines[i]);
+                }
 
                 if (split_command[0] == "if")
                 {
@@ -193,7 +196,7 @@ namespace GDI__Assignment_ASE
                     {
                         if (vars.Contains(split_command[1]))
                         {
-                            int element = Array.IndexOf(vars, split_command[1]);
+                            int element = vars.IndexOf(split_command[1]);
 
                             if (valid == "==")
                             {
@@ -209,6 +212,7 @@ namespace GDI__Assignment_ASE
                                         {
                                             Font f = new Font("Arial", 14);
                                             g.DrawString("Inside If Loop", f, Brushes.Red, new Point(50, 50));
+
                                         }
 
                                     }
