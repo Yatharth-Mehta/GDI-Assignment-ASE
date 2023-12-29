@@ -1,8 +1,10 @@
-﻿using GDI__Assignment_ASE.Properties;
+﻿using GDI__Assignment_ASE;
+using GDI__Assignment_ASE.Properties;
 using System;
 using System.Collections.Generic;
 using System.Drawing;
 using System.Linq;
+using System.Runtime.Remoting.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
@@ -13,15 +15,15 @@ namespace GDI__Assignment_ASE
     {
         String code;
         String fillvalue;
-        List<string>vars = new List<string>();
-        List<string>values = new List<string>();
+        List<string> vars = new List<string>();
+        List<string> values = new List<string>();
         Graphics g;
 
-        public multiline(String code, Graphics g, String filvalue)
+        public multiline(String code, Graphics g, String fillvalue)
         {
             this.code = code;
             this.g = g;
-            this.fillvalue = filvalue;
+            this.fillvalue = fillvalue;
         }
 
         public string variables()
@@ -37,7 +39,7 @@ namespace GDI__Assignment_ASE
 
             String[] lines = code.Split('\n');
 
-            
+
             for (int i = 0; i < lines.Length; i++)
             {
                 String[] split_command = lines[i].Split(' ');
@@ -135,9 +137,9 @@ namespace GDI__Assignment_ASE
 
                 if (split_command.Contains("="))
                 {
-                        vars.Add(split_command[0]);
-                        values.Add(split_command[2]);
-                    
+                    vars.Add(split_command[0]);
+                    values.Add(split_command[2]);
+
                 }
 
 
@@ -195,10 +197,10 @@ namespace GDI__Assignment_ASE
                 // Increament/Decreament Condition ----------------------------------------------------------------------
 
 
-                if (vars.Contains(split_command[0]) && split_command[1] == "="  && (split_command[2] == split_command[0]))
+                if (vars.Contains(split_command[0]) && split_command[1] == "=" && (split_command[2] == split_command[0]))
                 {
-                  
-                    variables_operation vo = new variables_operation(values,vars);
+
+                    variables_operation vo = new variables_operation(values, vars);
                     int element = vars.IndexOf(split_command[2]);
                     values[element] = vo.new_value(lines[i]);
                 }
@@ -236,7 +238,7 @@ namespace GDI__Assignment_ASE
                                             i = j; break;
                                         }
                                         else
-                                        { 
+                                        {
                                             String[] if_commands = lines[j].Split(' ');
                                             if (if_commands[0] == "circle")
                                             {
@@ -275,31 +277,181 @@ namespace GDI__Assignment_ASE
                             Font f = new Font("Arial", 14);
                             g.DrawString(valid, f, Brushes.Red, new Point(50, 50));
                         }
-                        
-                        
+
+
                     }
 
                 }
+
 
 
                 // While Loop ----------------------------------------------------------------------
 
                 if (split_command[0] == "while")
                 {
-                    if (vars.Contains(split_command[1]) && vars.Contains(split_command[3]))
+                    while_loop wl = new while_loop(split_command[2]);
+                    String condition = wl.validation();
+
+                    if (condition == "false")
                     {
                         Font f = new Font("Arial", 14);
-                        g.DrawString("Both are variables", f, Brushes.Red, new Point(50, 50));
+                        g.DrawString("Invalid While condition", f, Brushes.Red, new Point(50, 50));
                     }
-                    else if (vars.Contains(split_command[1]) || vars.Contains(split_command[3]))
+
+                    if (condition != "false")
                     {
-                        Font f = new Font("Arial", 14);
-                        g.DrawString("Only one is a variable", f, Brushes.Red, new Point(50, 50));
-                    }
-                    else
-                    {
-                        Font f = new Font("Arial", 14);
-                        g.DrawString("None are variables", f, Brushes.Red, new Point(50, 50));
+                        if (vars.Contains(split_command[1]))
+                        {
+
+
+                            if (condition == "==")
+                            {
+                                int element_ = vars.IndexOf(split_command[1]);
+                                while (values[element_] == split_command[3])
+                                {
+                                    for (int j = i + 1; j < lines.Length; j++)
+                                    {
+                                        if (lines[j].Trim() == "endloop")
+                                        {
+                                            i = j; break;
+                                        }
+                                        else
+                                        {
+                                                    String inside_loop = lines[j];
+                                                    while_calling wc = new while_calling(inside_loop, g, fillvalue, vars, values);
+                                                    wc.cmds();
+                                        }
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                for (int j = i + 1; j < lines.Length; j++)
+                                {
+                                    if (lines[j].Trim() == "endif")
+                                    {
+                                        i = j;
+                                    }
+                                }
+                            }
+
+
+                            if (condition == ">")
+                            {
+                                int element_ = vars.IndexOf(split_command[1]);
+                                if (int.Parse(values[element_]) > int.Parse(split_command[3]))
+                                {
+                                    for (int j = i + 1; j < lines.Length; j++)
+                                    {
+                                        if (lines[j].Trim() == "endloop")
+                                        {
+                                            i = j; break;
+                                        }
+                                        else
+                                        {
+                                            String inside_loop = lines[j];
+                                            while_calling wc = new while_calling(inside_loop, g, fillvalue, vars, values);
+                                            wc.cmds();
+                                        }
+                                    }
+                                }
+                            }
+
+                            if (condition == "<")
+                            {
+                                int element_ = vars.IndexOf(split_command[1]);
+                                if (int.Parse(values[element_]) < int.Parse(split_command[3]))
+                                {
+                                    for (int j = i + 1; j < lines.Length; j++)
+                                    {
+                                        if (lines[j].Trim() == "endloop")
+                                        {
+                                            i = j; break;
+                                        }
+                                        else
+                                        {
+                                            String inside_loop = lines[j];
+                                            while_calling wc = new while_calling(inside_loop, g, fillvalue, vars, values);
+                                            wc.cmds();
+                                        }
+                                    }
+                                }
+                            }
+
+                            if (condition == "!=")
+                            {
+                                int element_ = vars.IndexOf(split_command[1]);
+                                if (int.Parse(values[element_]) != int.Parse(split_command[3]))
+                                {
+                                    for (int j = i + 1; j < lines.Length; j++)
+                                    {
+                                        if (lines[j].Trim() == "endloop")
+                                        {
+                                            i = j; break;
+                                        }
+                                        else
+                                        {
+                                            String inside_loop = lines[j];
+                                            while_calling wc = new while_calling(inside_loop, g, fillvalue, vars, values);
+                                            wc.cmds();
+                                        }
+                                    }
+                                }
+                            }
+
+                            if (condition == "<=")
+                            {
+                                int element_ = vars.IndexOf(split_command[1]);
+                                if (int.Parse(values[element_]) <= int.Parse(split_command[3]))
+                                {
+                                    for (int j = i + 1; j < lines.Length; j++)
+                                    {
+                                        if (lines[j].Trim() == "endloop")
+                                        {
+                                            i = j; break;
+                                        }
+                                        else
+                                        {
+                                            String inside_loop = lines[j];
+                                            while_calling wc = new while_calling(inside_loop, g, fillvalue, vars, values);
+                                            wc.cmds();
+                                        }
+                                    }
+                                }
+                            }
+
+                            if (condition == ">=")
+                            {
+                                int element_ = vars.IndexOf(split_command[1]);
+                                if (int.Parse(values[element_]) >= int.Parse(split_command[3]))
+                                {
+                                    for (int j = i + 1; j < lines.Length; j++)
+                                    {
+                                        if (lines[j].Trim() == "endloop")
+                                        {
+                                            i = j; break;
+                                        }
+                                        else
+                                        {
+                                            String inside_loop = lines[j];
+                                            while_calling wc = new while_calling(inside_loop, g, fillvalue, vars, values);
+                                            wc.cmds();
+                                        }
+                                    }
+                                }
+                            }
+
+                            else
+                            {
+                                for (int j = i + 1; j < lines.Length; j++)
+                                {
+                                    if (lines[j].Trim() == "endloop")
+                                    {
+                                        i = j;
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
 
@@ -459,3 +611,119 @@ namespace GDI__Assignment_ASE
                                                 }
                                             }
                                         */
+
+
+
+
+
+
+
+
+
+
+
+
+/*if(vars.Contains(split_command[1]) && vars.Contains(split_command[3]))
+                { 
+                        int elem1 = vars.IndexOf(split_command[1]);
+                        int elem2 = vars.IndexOf(split_command[3]);
+                        Font f = new Font("Arial", 14);
+                        int a = int.Parse(values[elem1]);
+                        int b = int.Parse(values[elem2]);
+
+
+                        if (condition == "==")
+                        {
+                            if (a == b)
+                            {
+                                loop_run = "yes";
+                            }
+                        }
+
+                    }
+                    *//* else if (vars.Contains(split_command[1]) || vars.Contains(split_command[3]))
+                      {
+                          Font f = new Font("Arial", 14);
+                          g.DrawString("Only one is a variable", f, Brushes.Red, new Point(50, 50));
+                      }
+                      else
+                      {
+                          Font f = new Font("Arial", 14);
+                          g.DrawString("None are variables", f, Brushes.Red, new Point(50, 50));
+                      }*//*
+                }
+                if (loop_run == "yes")
+                {
+                    Font f = new Font("Arial", 14);
+                    g.DrawString(lines[i], f, Brushes.Red, new Point(50, 50));
+                }*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*while_loop wl = new while_loop(split_command[2]);
+String condition = wl.validation();
+String loop_run = "no";
+if (condition == "false")
+{
+    Font f = new Font("Arial", 14);
+    g.DrawString("Invalid While condition", f, Brushes.Red, new Point(50, 50));
+}
+
+if (condition != "false")
+{
+    if (vars.Contains(split_command[1]))
+    {
+        int elem = vars.IndexOf(split_command[1]);
+        if (int.TryParse(split_command[3], out _))
+        {
+            if (int.Parse(values[elem]) == int.Parse(split_command[3]))
+            {
+                i++;
+                Font f = new Font("Arial", 14);
+                while (lines[i] != "endloop")
+                {
+                    String[] for_commands = lines[i].Split(' ');
+                    if (for_commands[0] == "circle")
+                    {
+                        while_calling wc = new while_calling(lines[i], g, fillvalue);
+                        wc.cmds();
+                        *//*int element = vars.IndexOf(for_commands[1]);
+                        String circle_command = for_commands[0] + " " + values[element];
+                        Drawing d = new Drawing();
+                        d.draw(g, circle_command, fillvalue);*//*
+
+                    }
+
+
+                    i++;
+                }
+            }
+        }
+    }
+}*/
