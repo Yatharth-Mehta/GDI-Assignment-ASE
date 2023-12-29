@@ -17,17 +17,23 @@ namespace GDI__Assignment_ASE
         List<string>values = new List<string>();
         Graphics g;
 
-        public multiline(String code, Graphics g, String fillvalue)
+        public multiline(String code, Graphics g, String filvalue)
         {
             this.code = code;
             this.g = g;
-            this.fillvalue = fillvalue;
+            this.fillvalue = filvalue;
         }
 
         public string variables()
         {
 
-            
+            List<string> commandlist = new List<string>();
+            commandlist.Add("circle");
+            commandlist.Add("rectangle");
+            commandlist.Add("triangle");
+            commandlist.Add("square");
+            commandlist.Add("drawto");
+            commandlist.Add("clear");
 
             String[] lines = code.Split('\n');
 
@@ -36,7 +42,95 @@ namespace GDI__Assignment_ASE
             {
                 String[] split_command = lines[i].Split(' ');
 
-                
+
+
+
+                // Shape Drawing Condition ----------------------------------------------------------------------
+
+
+                if (commandlist.Contains(split_command[0]))
+                {
+                    split_command[0].ToLower();
+                    switch (split_command[0])
+                    {
+                        case "circle":
+                            if (int.TryParse(split_command[1], out _))
+                            {
+                                Drawing d = new Drawing();
+                                d.draw(g, lines[i], fillvalue);
+                            }
+                            else if (vars.Contains(split_command[1]))
+                            {
+                                int element = vars.IndexOf(split_command[1]);
+                                String circle_command = split_command[0] + " " + values[element];
+                                Drawing d = new Drawing();
+                                d.draw(g, circle_command, fillvalue);
+                            }
+                            break;
+
+                        case "rectangle":
+                            if (int.TryParse(split_command[1], out _) && int.TryParse(split_command[2], out _))
+                            {
+                                Drawing d = new Drawing();
+                                d.draw(g, lines[i], fillvalue);
+                            }
+                            else if (vars.Contains(split_command[1]) && vars.Contains(split_command[2]))
+                            {
+                                int element = vars.IndexOf(split_command[1]);
+                                int element2 = vars.IndexOf(split_command[2]);
+                                String rect_command = split_command[0] + " " + values[element] + " " + values[element2];
+                                Drawing d = new Drawing();
+                                d.draw(g, rect_command, fillvalue);
+                            }
+                            break;
+
+                        case "square":
+                            if (int.TryParse(split_command[1], out _) && int.TryParse(split_command[2], out _))
+                            {
+                                Drawing d = new Drawing();
+                                d.draw(g, lines[i], fillvalue);
+                            }
+                            else if (vars.Contains(split_command[1]) && vars.Contains(split_command[2]))
+                            {
+                                int element = vars.IndexOf(split_command[1]);
+                                int element2 = vars.IndexOf(split_command[2]);
+                                String square_command = split_command[0] + " " + values[element] + " " + values[element2];
+                                Drawing d = new Drawing();
+                                d.draw(g, square_command, fillvalue);
+                            }
+                            break;
+
+                        case "clear":
+                            if (lines[i] == "clear")
+                            {
+                                Drawing d = new Drawing();
+                                d.draw(g, lines[i], fillvalue);
+                            }
+                            break;
+
+                        case "drawto":
+                            if (int.TryParse(split_command[1], out _) && int.TryParse(split_command[2], out _))
+                            {
+                                Drawing d = new Drawing();
+                                d.draw(g, lines[i], fillvalue);
+                            }
+                            else if (vars.Contains(split_command[1]) && vars.Contains(split_command[2]))
+                            {
+                                int element = vars.IndexOf(split_command[1]);
+                                int element2 = vars.IndexOf(split_command[2]);
+                                String drawto = split_command[0] + " " + values[element] + " " + values[element2];
+                                Drawing d = new Drawing();
+                                d.draw(g, drawto, fillvalue);
+                            }
+                            break;
+                        default: break;
+                    }
+                }
+
+
+
+
+                // Variable Creation ----------------------------------------------------------------------
 
 
                 if (split_command.Contains("="))
@@ -45,6 +139,12 @@ namespace GDI__Assignment_ASE
                         values.Add(split_command[2]);
                     
                 }
+
+
+
+                // Print Condition ----------------------------------------------------------------------
+
+
                 else if (split_command[0].Equals("print"))
                 {
                     if (split_command.Length == 2 && vars.Contains(split_command[1]))
@@ -90,6 +190,11 @@ namespace GDI__Assignment_ASE
                     }
                 }
 
+
+
+                // Increament/Decreament Condition ----------------------------------------------------------------------
+
+
                 if (vars.Contains(split_command[0]) && split_command[1] == "="  && (split_command[2] == split_command[0]))
                 {
                   
@@ -97,6 +202,11 @@ namespace GDI__Assignment_ASE
                     int element = vars.IndexOf(split_command[2]);
                     values[element] = vo.new_value(lines[i]);
                 }
+
+
+
+                // If Condition ----------------------------------------------------------------------
+
 
                 if (split_command[0] == "if")
                 {
@@ -172,8 +282,26 @@ namespace GDI__Assignment_ASE
                 }
 
 
-                
-                
+                // While Loop ----------------------------------------------------------------------
+
+                if (split_command[0] == "while")
+                {
+                    if (vars.Contains(split_command[1]) && vars.Contains(split_command[3]))
+                    {
+                        Font f = new Font("Arial", 14);
+                        g.DrawString("Both are variables", f, Brushes.Red, new Point(50, 50));
+                    }
+                    else if (vars.Contains(split_command[1]) || vars.Contains(split_command[3]))
+                    {
+                        Font f = new Font("Arial", 14);
+                        g.DrawString("Only one is a variable", f, Brushes.Red, new Point(50, 50));
+                    }
+                    else
+                    {
+                        Font f = new Font("Arial", 14);
+                        g.DrawString("None are variables", f, Brushes.Red, new Point(50, 50));
+                    }
+                }
 
             }//for loop end
             return "hello";
