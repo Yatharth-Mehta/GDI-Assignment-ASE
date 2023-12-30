@@ -23,6 +23,8 @@ namespace GDI__Assignment_ASE
             list.Add("==");
             list.Add("<=");
             list.Add(">=");
+            list.Add(">");
+            list.Add("<");
             list.Add("!=");
             //String op = characters[1].ToString() + characters[2].ToString(); 
             if (list.Contains(condition))

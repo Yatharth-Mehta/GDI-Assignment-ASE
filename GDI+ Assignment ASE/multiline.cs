@@ -223,13 +223,12 @@ namespace GDI__Assignment_ASE
 
                     else
                     {
-                        if (vars.Contains(split_command[1]))
+                        if (vars.Contains(split_command[1]) && int.TryParse(split_command[3],out _))
                         {
-                            int element = vars.IndexOf(split_command[1]);
-
+                            int element_ = vars.IndexOf(split_command[1]);
                             if (valid == "==")
                             {
-                                if (values[element] == split_command[3])
+                                if (values[element_] == split_command[3])
                                 {
                                     for (int j = i + 1; j < lines.Length; j++)
                                     {
@@ -239,46 +238,268 @@ namespace GDI__Assignment_ASE
                                         }
                                         else
                                         {
-                                            String[] if_commands = lines[j].Split(' ');
-                                            if (if_commands[0] == "circle")
+                                            String inside_loop = lines[j];
+                                            if_condition_calling icc = new if_condition_calling(inside_loop, g, fillvalue, vars, values);
+                                            icc.cmds();
+                                        }
+                                    }
+                                }
+                            }
+
+
+                            else if (valid == ">")
+                            {
+                                if (int.Parse(values[element_]) > int.Parse(split_command[3]))
+                                {
+                                    for (int j = i + 1; j < lines.Length; j++)
+                                    {
+                                        if (lines[j].Trim() == "endif")
+                                        {
+                                            i = j; break;
+                                        }
+                                        else
+                                        {
+                                            String inside_loop = lines[j];
+                                            if_condition_calling icc = new if_condition_calling(inside_loop, g, fillvalue, vars, values);
+                                            icc.cmds();
+                                        }
+                                    }
+                                }
+                            }
+
+
+                            else if (valid == "<")
+                            {
+                                if (int.Parse(values[element_]) < int.Parse(split_command[3]))
+                                {
+                                    for (int j = i + 1; j < lines.Length; j++)
+                                    {
+                                        if (lines[j].Trim() == "endif")
+                                        {
+                                            i = j; break;
+                                        }
+                                        else
+                                        {
+                                            String inside_loop = lines[j];
+                                            if_condition_calling icc = new if_condition_calling(inside_loop, g, fillvalue, vars, values);
+                                            icc.cmds();
+                                        }
+                                    }
+                                }
+                            }
+
+
+                            else if (valid == "!=")
+                            {
+                                if (int.Parse(values[element_]) != int.Parse(split_command[3]))
+                                {
+                                    for (int j = i + 1; j < lines.Length; j++)
+                                    {
+                                        if (lines[j].Trim() == "endif")
+                                        {
+                                            i = j; break;
+                                        }
+                                        else
+                                        {
+                                            String inside_loop = lines[j];
+                                            if_condition_calling icc = new if_condition_calling(inside_loop, g, fillvalue, vars, values);
+                                            icc.cmds();
+                                        }
+                                    }
+                                }
+                            }
+
+
+
+                            else if (valid == ">=")
+                            {
+                                if (int.Parse(values[element_]) >= int.Parse(split_command[3]))
+                                {
+                                    for (int j = i + 1; j < lines.Length; j++)
+                                    {
+                                        if (lines[j].Trim() == "endif")
+                                        {
+                                            i = j; break;
+                                        }
+                                        else
+                                        {
+                                            String inside_loop = lines[j];
+                                            if_condition_calling icc = new if_condition_calling(inside_loop, g, fillvalue, vars, values);
+                                            icc.cmds();
+                                        }
+                                    }
+                                }
+                            }
+
+
+                            else if (valid == "<=")
+                            {
+                                if (int.Parse(values[element_]) <= int.Parse(split_command[3]))
+                                {
+                                    for (int j = i + 1; j < lines.Length; j++)
+                                    {
+                                        if (lines[j].Trim() == "endif")
+                                        {
+                                            i = j; break;
+                                        }
+                                        else
+                                        {
+                                            String inside_loop = lines[j];
+                                            if_condition_calling icc = new if_condition_calling(inside_loop, g, fillvalue, vars, values);
+                                            icc.cmds();
+                                        }
+                                    }
+                                }
+                            }
+
+                        }
+
+
+
+                        else if (vars.Contains(split_command[1]))
+                        {
+                            String sec_ele_present = split_command[3].Trim();
+                            if (vars.Contains(sec_ele_present))
+                            {
+                                int element_ = vars.IndexOf(split_command[1]);
+                                int second_element = vars.IndexOf(sec_ele_present);
+                                if (valid == "==")
+                                {
+                                    if (int.Parse(values[element_]) == int.Parse(values[second_element]))
+                                    {
+                                        for (int j = i + 1; j < lines.Length; j++)
+                                        {
+                                            if (lines[j].Trim() == "endif")
                                             {
-                                                if (vars.Contains(if_commands[1]))
-                                                {
-                                                    Font f = new Font("Arial", 14);
-                                                    g.DrawString(if_commands[1], f, Brushes.Red, new Point(50, 50));
-                                                }
-                                                else
-                                                {
-                                                    Font f = new Font("Arial", 14);
-                                                    g.DrawString("Not Found", f, Brushes.Red, new Point(50, 50));
-                                                }
-                                                /*String circle_command = if_commands[0] + " " + values[elem];
-                                                  Drawing d = new Drawing();
-                                                  d.draw(g, circle_command, fillvalue);*/
+                                                i = j; break;
+                                            }
+                                            else
+                                            {
+                                                String inside_loop = lines[j];
+                                                if_condition_calling icc = new if_condition_calling(inside_loop, g, fillvalue, vars, values);
+                                                icc.cmds();
                                             }
                                         }
-
                                     }
                                 }
-                            }
-                            else
-                            {
-                                for (int j = i + 1; j < lines.Length; j++)
+
+
+                                if (valid == ">")
                                 {
-                                    if (lines[j].Trim() == "endif")
+                                    if (int.Parse(values[element_]) > int.Parse(values[second_element]))
                                     {
-                                        i = j;
+                                        for (int j = i + 1; j < lines.Length; j++)
+                                        {
+                                            if (lines[j].Trim() == "endif")
+                                            {
+                                                i = j; break;
+                                            }
+                                            else
+                                            {
+                                                String inside_loop = lines[j];
+                                                if_condition_calling icc = new if_condition_calling(inside_loop, g, fillvalue, vars, values);
+                                                icc.cmds();
+                                            }
+                                        }
+                                    }
+                                }
+
+
+                                if (valid == "<")
+                                {
+                                    if (int.Parse(values[element_]) < int.Parse(values[second_element]))
+                                    {
+                                        for (int j = i + 1; j < lines.Length; j++)
+                                        {
+                                            if (lines[j].Trim() == "endif")
+                                            {
+                                                i = j; break;
+                                            }
+                                            else
+                                            {
+                                                String inside_loop = lines[j];
+                                                if_condition_calling icc = new if_condition_calling(inside_loop, g, fillvalue, vars, values);
+                                                icc.cmds();
+                                            }
+                                        }
+                                    }
+                                }
+
+
+                                if (valid == "!=")
+                                {
+                                    if (int.Parse(values[element_]) != int.Parse(values[second_element]))
+                                    {
+                                        for (int j = i + 1; j < lines.Length; j++)
+                                        {
+                                            if (lines[j].Trim() == "endif")
+                                            {
+                                                i = j; break;
+                                            }
+                                            else
+                                            {
+                                                String inside_loop = lines[j];
+                                                if_condition_calling icc = new if_condition_calling(inside_loop, g, fillvalue, vars, values);
+                                                icc.cmds();
+                                            }
+                                        }
+                                    }
+                                }
+
+
+
+                                if (valid == ">=")
+                                {
+                                    if (int.Parse(values[element_]) >= int.Parse(values[second_element]))
+                                    {
+                                        for (int j = i + 1; j < lines.Length; j++)
+                                        {
+                                            if (lines[j].Trim() == "endif")
+                                            {
+                                                i = j; break;
+                                            }
+                                            else
+                                            {
+                                                String inside_loop = lines[j];
+                                                if_condition_calling icc = new if_condition_calling(inside_loop, g, fillvalue, vars, values);
+                                                icc.cmds();
+                                            }
+                                        }
+                                    }
+                                }
+
+
+                                if (valid == "<=")
+                                {
+                                    if (int.Parse(values[element_]) <= int.Parse(values[second_element]))
+                                    {
+                                        for (int j = i + 1; j < lines.Length; j++)
+                                        {
+                                            if (lines[j].Trim() == "endif")
+                                            {
+                                                i = j; break;
+                                            }
+                                            else
+                                            {
+                                                String inside_loop = lines[j];
+                                                if_condition_calling icc = new if_condition_calling(inside_loop, g, fillvalue, vars, values);
+                                                icc.cmds();
+                                            }
+                                        }
                                     }
                                 }
                             }
                         }
-                        else if (lines[i] == "endif")
+                        else
                         {
-                            Font f = new Font("Arial", 14);
-                            g.DrawString(valid, f, Brushes.Red, new Point(50, 50));
+                            for (int j = i + 1; j < lines.Length; j++)
+                            {
+                                if (lines[j].Trim() == "endif")
+                                {
+                                    i = j;
+                                }
+                            }
                         }
-
-
                     }
 
                 }
@@ -317,23 +538,14 @@ namespace GDI__Assignment_ASE
                                         }
                                         else
                                         {
-                                                    String inside_loop = lines[j];
-                                                    while_calling wc = new while_calling(inside_loop, g, fillvalue, vars, values);
-                                                    wc.cmds();
+                                            String inside_loop = lines[j];
+                                            while_calling wc = new while_calling(inside_loop, g, fillvalue, vars, values);
+                                            wc.cmds();
                                         }
                                     }
                                 }
                             }
-                            else
-                            {
-                                for (int j = i + 1; j < lines.Length; j++)
-                                {
-                                    if (lines[j].Trim() == "endif")
-                                    {
-                                        i = j;
-                                    }
-                                }
-                            }
+
 
 
                             if (condition == ">")
