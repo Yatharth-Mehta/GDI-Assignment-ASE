@@ -14,6 +14,10 @@ namespace GDI__Assignment_ASE
         String command;
         public while_iteration(String command,Graphics g,String fillvalue)
         {
+            if (g is null)
+            {
+                throw new ArgumentNullException(nameof(g));
+            }
             this.g = g;
             this.fillvalue = fillvalue;
             this.command = command;

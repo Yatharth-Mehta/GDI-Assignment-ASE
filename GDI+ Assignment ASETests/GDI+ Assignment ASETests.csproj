@@ -72,6 +72,7 @@
     <Compile Include="triangleTests.cs" />
     <Compile Include="variables_operationTests.cs" />
     <Compile Include="while_callingTests.cs" />
+    <Compile Include="while_iterationTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
