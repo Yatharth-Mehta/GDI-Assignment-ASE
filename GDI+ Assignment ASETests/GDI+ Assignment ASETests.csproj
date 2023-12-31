@@ -60,6 +60,7 @@
     <Compile Include="CircleTests.cs" />
     <Compile Include="clearTests.cs" />
     <Compile Include="DrawingTests.cs" />
+    <Compile Include="fillTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

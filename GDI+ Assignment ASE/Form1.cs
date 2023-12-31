@@ -28,7 +28,7 @@ namespace GDI__Assignment_ASE
             var graphics = Graphics.FromImage(drawingcanvas.Image);
             graphics.Clear(Color.White);
 
-            fill fv = new fill();
+            fill fv = new fill(graphics);
             fv.fillvalue = fillvalue.Text;
             Drawing d = new Drawing();
 
