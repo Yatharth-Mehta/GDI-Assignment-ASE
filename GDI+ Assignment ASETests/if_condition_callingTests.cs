@@ -12,9 +12,11 @@ namespace GDI__Assignment_ASE.Tests
     public class if_condition_callingTests
     {
         [TestMethod()]
+        [ExpectedException(typeof(ArgumentNullException), "The Exception not found")]
         public void cmdsTest()
         {
-            Assert.Fail();
+            if_condition_calling ifcc = new if_condition_calling(null,null,null,null,null);
+            ifcc.cmds();
         }
     }
 }
