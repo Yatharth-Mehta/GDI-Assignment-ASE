@@ -15,8 +15,11 @@ namespace GDI__Assignment_ASE.Properties
         private int xpos = 0;
         private int ypos = 0;
         public void draw(Graphics g ,String cmd,String fillvalue)
-        { 
-            
+        {
+            if (g is null)
+            {
+                throw new ArgumentNullException(nameof(g));
+            }
             Pen pen = new Pen(Color.Black);
             Brush brush = new SolidBrush(Color.Black);
 

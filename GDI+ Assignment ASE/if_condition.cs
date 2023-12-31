@@ -14,6 +14,10 @@ namespace GDI__Assignment_ASE
         Graphics g;
         public if_condition(Graphics g, String condition)
         {
+            if (g is null)
+            {
+                throw new ArgumentNullException(nameof(g));
+            }
             this.condition = condition;
             this.g = g;
         }
