@@ -33,7 +33,10 @@ namespace GDI__Assignment_ASE
      
         public string variables()
         {
-
+            if (g is null)
+            {
+                throw new ArgumentNullException(nameof(g));
+            }
             List<string> commandlist = new List<string>();
             commandlist.Add("circle");
             commandlist.Add("rectangle");
