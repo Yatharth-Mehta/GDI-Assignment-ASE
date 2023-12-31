@@ -64,6 +64,7 @@
     <Compile Include="if_conditionTests.cs" />
     <Compile Include="if_condition_callingTests.cs" />
     <Compile Include="method_callingTests.cs" />
+    <Compile Include="method_calling_with_parametresTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
