@@ -12,7 +12,11 @@ namespace GDI__Assignment_ASE
         List<String> values;
         List<String> vars;
         public variables_operation(List<String> values , List<String> vars)
-        { 
+        {
+            if (values is null)
+            {
+                throw new ArgumentNullException(nameof(values));
+            }
             this.values = values;
             this.vars = vars;
         }

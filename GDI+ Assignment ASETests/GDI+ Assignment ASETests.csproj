@@ -70,6 +70,7 @@
     <Compile Include="rectangleTests.cs" />
     <Compile Include="resetTests.cs" />
     <Compile Include="triangleTests.cs" />
+    <Compile Include="variables_operationTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
