@@ -119,7 +119,7 @@ namespace GDI__Assignment_ASE
 
         private void savebutton_Click(object sender, EventArgs e)
         {
-           
+            save_button sb = new save_button(sender);
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 StreamWriter file = new StreamWriter(saveFileDialog1.FileName);
