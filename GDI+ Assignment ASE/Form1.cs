@@ -105,6 +105,8 @@ namespace GDI__Assignment_ASE
 
         private void openfile_Click(object sender, EventArgs e)
         {
+            open_button op = new open_button();
+            op.open(sender);
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 String file = openFileDialog1.FileName;
@@ -117,6 +119,10 @@ namespace GDI__Assignment_ASE
 
         private void savebutton_Click(object sender, EventArgs e)
         {
+            if (sender is null)
+            {
+                throw new ArgumentNullException(nameof(sender));
+            }
             if (saveFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 StreamWriter file = new StreamWriter(saveFileDialog1.FileName);
