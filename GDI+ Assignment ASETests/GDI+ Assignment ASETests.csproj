@@ -68,6 +68,7 @@
     <Compile Include="multilineTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="rectangleTests.cs" />
+    <Compile Include="resetTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

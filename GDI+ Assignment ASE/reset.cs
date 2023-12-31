@@ -11,6 +11,14 @@ namespace GDI__Assignment_ASE
     {
         public reset(String commandline , String multiline)
         {
+            if (commandline is null)
+            {
+                throw new ArgumentNullException(nameof(commandline));
+            }
+            if (multiline is null)
+            {
+                throw new ArgumentNullException(nameof(multiline));
+            }
             commandline = "";
             multiline = "";
         }
