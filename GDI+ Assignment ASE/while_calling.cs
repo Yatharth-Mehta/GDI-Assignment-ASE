@@ -16,7 +16,11 @@ namespace GDI__Assignment_ASE
         List <string> vars = new List <string> ();
         List <string> values = new List <string> ();
         public while_calling(String command,Graphics g , String fillvalue,List <string> vars , List <string> values)
-        { 
+        {
+            if (g is null)
+            {
+                throw new ArgumentNullException(nameof(g));
+            }
             this.code = command;
             this.fillvalue = fillvalue;
             this.g = g;
