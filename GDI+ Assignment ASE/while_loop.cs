@@ -11,6 +11,10 @@ namespace GDI__Assignment_ASE
         String condition;
         public while_loop(string condition)
         {
+            if (condition is null)
+            {
+                throw new ArgumentNullException(nameof(condition));
+            }
             this.condition = condition;
         }
         public String validation()
