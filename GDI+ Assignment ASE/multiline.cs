@@ -6,6 +6,7 @@ using System.Drawing;
 using System.Linq;
 using System.Runtime.Remoting.Messaging;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Xml.Linq;
 
@@ -17,6 +18,8 @@ namespace GDI__Assignment_ASE
         String fillvalue;
         List<string> vars = new List<string>();
         List<string> values = new List<string>();
+        List<string> meth_vars= new List<string>();
+        List<string> meth_values = new List<string>();
         List<string> methods= new List<string>();
         List<string> method_commands= new List<string>();
         Graphics g;
@@ -27,7 +30,7 @@ namespace GDI__Assignment_ASE
             this.g = g;
             this.fillvalue = fillvalue;
         }
-
+     
         public string variables()
         {
 
@@ -45,9 +48,6 @@ namespace GDI__Assignment_ASE
             for (int i = 0; i < lines.Length; i++)
             {
                 String[] split_command = lines[i].Split(' ');
-
-
-
 
                 // Shape Drawing Condition ----------------------------------------------------------------------
 
@@ -510,6 +510,7 @@ namespace GDI__Assignment_ASE
 
                 // While Loop ----------------------------------------------------------------------
 
+
                 if (split_command[0] == "while")
                 {
                     while_loop wl = new while_loop(split_command[2]);
@@ -670,32 +671,79 @@ namespace GDI__Assignment_ASE
                 }
 
 
+
+                // Method Creation ----------------------------------------------------------------------
+
+
                 if (split_command[0] == "method")
                 {
                     String[] method_name = split_command[1].Trim().Split('(', ')');
                     String[] parameters = method_name[1].Trim().Split(',');
                     methods.Add(method_name[0] + "()");
-                    for (int j = i + 1; j < lines.Length; j++)
+                    if (parameters == null)
                     {
-                        if (lines[j].Trim() == "endmethod")
+                        for (int j = i + 1; j < lines.Length; j++)
                         {
-                            i = j; break;
+                            if (lines[j].Trim() == "endmethod")
+                            {
+                                i = j; break;
+                            }
+                            else
+                            {
+                                method_commands.Add(lines[j]);
+                            }
                         }
-                        else
+                    }
+                    else
+                    {
+                        for (int j = 0; j < parameters.Length; j++)
                         {
-                            method_commands.Add(lines[j]);
+                            meth_vars.Add(parameters[j]);
+                        }
+                        for (int j = i + 1; j < lines.Length; j++)
+                        {
+                            if (lines[j].Trim() == "endmethod")
+                            {
+                                i = j; break;
+                            }
+                            else
+                            {
+                                method_commands.Add(lines[j]);
+                            }
                         }
                     }
                 }
 
+                String pattern = @"^([a-zA-Z_]\w*)\(([\w,]+)\)?$";
+                Match m = Regex.Match(split_command[0].Trim(), pattern);
+                if (m.Success)
+                {
+                    String[] split_call = split_command[0].Trim().Split('(', ')');
+                    String[] par = split_call[1].Split(',');
+                    for (int j = 0; j < par.Length; j++)
+                    {
+                        /*
+                        Font f = new Font("Arial", 14);
+                        g.DrawString(par[j], f, Brushes.Red, new Point(50, 80));
+                       */
+                        meth_values.Add(par[j]);
+
+                    }
+                  
+                    for (int j = 0; j < method_commands.Count(); j++)
+                    {
+                        method_calling_with_parametres mc = new method_calling_with_parametres(method_commands[j], g, fillvalue, meth_vars, meth_values);
+                        mc.cmds();
+                    }
+                }
 
                 if (methods.Contains(split_command[0]))
                 {
-                        for (int j = 0; j < method_commands.Count(); j++)
-                        {
-                            method_calling mc = new method_calling(method_commands[j], g, fillvalue, vars, values);
-                            mc.cmds();
-                        }
+                    for (int j = 0; j < method_commands.Count(); j++)
+                    {
+                        method_calling mc = new method_calling(method_commands[j], g, fillvalue, vars, values);
+                        mc.cmds();
+                    }
                 }
 
             }//for loop end
