@@ -58,6 +58,7 @@
   </Choose>
   <ItemGroup>
     <Compile Include="CircleTests.cs" />
+    <Compile Include="clearTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
