@@ -66,6 +66,7 @@
     <Compile Include="method_callingTests.cs" />
     <Compile Include="method_calling_with_parametresTests.cs" />
     <Compile Include="multilineTests.cs" />
+    <Compile Include="open_buttonTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="rectangleTests.cs" />
     <Compile Include="resetTests.cs" />
