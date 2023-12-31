@@ -76,6 +76,7 @@
     <Compile Include="triangle_exception.cs" />
     <Compile Include="variables_operation.cs" />
     <Compile Include="while_calling.cs" />
+    <Compile Include="while_iteration.cs" />
     <Compile Include="while_loop.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>

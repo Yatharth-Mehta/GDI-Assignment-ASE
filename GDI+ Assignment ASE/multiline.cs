@@ -537,7 +537,10 @@ namespace GDI__Assignment_ASE
                                     {
                                         if (lines[j].Trim() == "endloop")
                                         {
-                                            i = j; break;
+                                            while_iteration wi = new while_iteration(lines[i],g,fillvalue);
+                                            wi.iterate();
+                                            i = j; 
+                                            break;
                                         }
                                         else
                                         {
@@ -560,6 +563,8 @@ namespace GDI__Assignment_ASE
                                     {
                                         if (lines[j].Trim() == "endloop")
                                         {
+                                            while_iteration wi = new while_iteration(lines[i], g, fillvalue);
+                                            wi.iterate();
                                             i = j; break;
                                         }
                                         else
@@ -581,6 +586,8 @@ namespace GDI__Assignment_ASE
                                     {
                                         if (lines[j].Trim() == "endloop")
                                         {
+                                            while_iteration wi = new while_iteration(split_command[0]+ " " + split_command[1] + " " + split_command[2] + " " + split_command[3], g, fillvalue);
+                                            wi.iterate();
                                             i = j; break;
                                         }
                                         else
@@ -602,6 +609,8 @@ namespace GDI__Assignment_ASE
                                     {
                                         if (lines[j].Trim() == "endloop")
                                         {
+                                            while_iteration wi = new while_iteration(lines[i], g, fillvalue);
+                                            wi.iterate();
                                             i = j; break;
                                         }
                                         else
@@ -623,6 +632,8 @@ namespace GDI__Assignment_ASE
                                     {
                                         if (lines[j].Trim() == "endloop")
                                         {
+                                            while_iteration wi = new while_iteration(lines[i], g, fillvalue);
+                                            wi.iterate();
                                             i = j; break;
                                         }
                                         else
@@ -644,6 +655,8 @@ namespace GDI__Assignment_ASE
                                     {
                                         if (lines[j].Trim() == "endloop")
                                         {
+                                            while_iteration wi = new while_iteration(lines[i], g, fillvalue);
+                                            wi.iterate();
                                             i = j; break;
                                         }
                                         else

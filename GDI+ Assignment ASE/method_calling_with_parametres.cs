@@ -37,7 +37,8 @@ namespace GDI__Assignment_ASE
             if (split_command[0] == "rectangle")
             {
                 int elem = vars.IndexOf(split_command[1].Trim());
-                String rect = split_command[0].Trim() + " " + values[elem] + " " + values[elem];
+                int elem1 = vars.IndexOf(split_command[2].Trim());
+                String rect = split_command[0].Trim() + " " + values[elem] + " " + values[elem1];
                 Drawing dr = new Drawing();
                 dr.draw(g, rect, fillvalue);
             }
