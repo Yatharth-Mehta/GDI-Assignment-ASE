@@ -17,6 +17,8 @@ namespace GDI__Assignment_ASE
         String fillvalue;
         List<string> vars = new List<string>();
         List<string> values = new List<string>();
+        List<string> methods= new List<string>();
+        List<string> method_commands= new List<string>();
         Graphics g;
 
         public multiline(String code, Graphics g, String fillvalue)
@@ -665,6 +667,35 @@ namespace GDI__Assignment_ASE
                             }
                         }
                     }
+                }
+
+
+                if (split_command[0] == "method")
+                {
+                    String[] method_name = split_command[1].Trim().Split('(', ')');
+                    String[] parameters = method_name[1].Trim().Split(',');
+                    methods.Add(method_name[0] + "()");
+                    for (int j = i + 1; j < lines.Length; j++)
+                    {
+                        if (lines[j].Trim() == "endmethod")
+                        {
+                            i = j; break;
+                        }
+                        else
+                        {
+                            method_commands.Add(lines[j]);
+                        }
+                    }
+                }
+
+
+                if (methods.Contains(split_command[0]))
+                {
+                        for (int j = 0; j < method_commands.Count(); j++)
+                        {
+                            method_calling mc = new method_calling(method_commands[j], g, fillvalue, vars, values);
+                            mc.cmds();
+                        }
                 }
 
             }//for loop end

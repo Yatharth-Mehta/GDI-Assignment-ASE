@@ -53,6 +53,7 @@
     <Compile Include="cmdline_empty_exception.cs" />
     <Compile Include="if_condition.cs" />
     <Compile Include="if_condition_calling.cs" />
+    <Compile Include="method_calling.cs" />
     <Compile Include="multiline.cs" />
     <Compile Include="Drawing.cs" />
     <Compile Include="fill.cs" />

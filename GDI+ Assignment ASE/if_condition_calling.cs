@@ -111,7 +111,7 @@ namespace GDI__Assignment_ASE
                 int element = vars.IndexOf(split_command[2]);
                 values[element] = vo.new_value(code);
             }
-
+           
 
         }
     }
