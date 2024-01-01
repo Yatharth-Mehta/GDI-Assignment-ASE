@@ -9,7 +9,10 @@ using System.Windows.Forms;
 
 namespace GDI__Assignment_ASE.Properties
 {
-    //Pen pen = new Pen(Color.Red, 2);
+    /// <summary>
+    /// This is Drawing class that will draw the commands given to it with valid parameters.
+    /// This class will not draw anything by itself.It will call the concerning drawing class which will then draw the shape
+    /// </summary>
     public class Drawing
      {
         private int xpos = 0;
@@ -82,11 +85,17 @@ namespace GDI__Assignment_ASE.Properties
                             triangle tr = new triangle(g, pen);
                             if (fillvalue == "on")
                             {
-                                tr.drawfill(g, brush, xpos, ypos);
+                            String[] first_value = split_command[1].Split(',');
+                            String[] second_value = split_command[2].Split(',');
+                            String[] third_value = split_command[3].Split(',');
+                            tr.drawfill(g, brush, xpos, ypos, int.Parse(first_value[0]), int.Parse(first_value[1]), int.Parse(second_value[0]), int.Parse(second_value[1]), int.Parse(third_value[0]), int.Parse(third_value[1]));
                             }
                             else
                             {
-                                tr.draw(g, pen, xpos, ypos);
+                            String[] first_value = split_command[1].Split(',');
+                            String[] second_value = split_command[2].Split(',');
+                            String[] third_value = split_command[3].Split(',');
+                            tr.draw(g, pen, xpos, ypos, int.Parse(first_value[0]), int.Parse(first_value[1]), int.Parse(second_value[0]), int.Parse(second_value[1]), int.Parse(third_value[0]), int.Parse(third_value[1]));
                             }
                             break;
 

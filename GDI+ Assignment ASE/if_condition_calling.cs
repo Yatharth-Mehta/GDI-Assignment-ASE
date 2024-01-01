@@ -115,7 +115,31 @@ namespace GDI__Assignment_ASE
                 int element = vars.IndexOf(split_command[2]);
                 values[element] = vo.new_value(code);
             }
-           
+
+            if (split_command[0] == "triangle")
+            {
+                String[] first_value = split_command[1].Split(',');
+                String[] second_value = split_command[2].Split(',');
+                String[] third_value = split_command[3].Split(',');
+                if ((int.TryParse(first_value[0], out _) && int.TryParse(first_value[1], out _)) && (int.TryParse(second_value[0], out _) && int.TryParse(second_value[1], out _)) && (int.TryParse(third_value[0], out _) && int.TryParse(third_value[1], out _)))
+                {
+                    Drawing d = new Drawing();
+                    d.draw(g, code, fillvalue);
+                }
+                else if (vars.Contains(first_value[0]) && vars.Contains(first_value[1]) && vars.Contains(second_value[0]) && vars.Contains(second_value[1]) && vars.Contains(third_value[0]) && vars.Contains(third_value[1]))
+                {
+                    int element = vars.IndexOf(first_value[0]);
+                    int element1 = vars.IndexOf(first_value[1]);
+                    int element2 = vars.IndexOf(second_value[0]);
+                    int element3 = vars.IndexOf(second_value[1]);
+                    int element4 = vars.IndexOf(third_value[0]);
+                    int element5 = vars.IndexOf(third_value[1]);
+                    String square_command = split_command[0] + " " + values[element] + "," + values[element1] + " " + values[element2] + "," + values[element3] + " " + values[element4] + "," + values[element5];
+                    Drawing d = new Drawing();
+                    d.draw(g, square_command, fillvalue);
+                }
+            }
+
 
         }
     }

@@ -68,7 +68,7 @@ namespace GDI__Assignment_ASE
                     if (split_command[0] == "triangle")
                     {
                         int total_ele = split_command.Count();
-                        if (total_ele == 1)
+                        if (total_ele == 4)
                         {
                             Font f = new Font("Arial", 14);
                             g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(50, 50));
