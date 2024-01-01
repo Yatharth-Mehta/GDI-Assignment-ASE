@@ -17,6 +17,13 @@ namespace GDI__Assignment_ASE.Properties
      {
         private int xpos = 0;
         private int ypos = 0;
+        /// <summary>
+        /// This Draw method will take the command user has entered and will execute the class of that shape or function.
+        /// </summary>
+        /// <param name="g">It is the graphic variable that will be used to pass to the shapes class in order for them to draw the shape</param>
+        /// <param name="cmd">It is the command that is entered which will determine what drawing has to be done</param>
+        /// <param name="fillvalue">It is fill value to know whether to make the shape filled or just with outline.</param>
+        /// <exception cref="ArgumentNullException"></exception>
         public void draw(Graphics g ,String cmd,String fillvalue)
         {
             if (g is null)
@@ -38,7 +45,7 @@ namespace GDI__Assignment_ASE.Properties
             commandlist.Add("moveto");
             commandlist.Add("drawto");
             commandlist.Add("clear");
-
+            
             if (commandlist.Contains(split_command[0]))
             {
                 
