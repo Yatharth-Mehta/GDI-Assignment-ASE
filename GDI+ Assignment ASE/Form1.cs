@@ -57,7 +57,7 @@ namespace GDI__Assignment_ASE
                     {
 
                         multiline cpl = new multiline(multiline.Text, graphics,fv.fillvalue);
-                        cpl.variables();
+                        cpl.multiline_main();
                     }
                     else
                     {

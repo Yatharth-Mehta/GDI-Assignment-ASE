@@ -47,7 +47,7 @@ namespace GDI__Assignment_ASE
      /// </summary>
      /// <returns></returns>
      /// <exception cref="ArgumentNullException"></exception>
-        public string variables()
+        public string multiline_main()
         {
             if (g is null)
             {
