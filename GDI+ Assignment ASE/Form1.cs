@@ -58,12 +58,6 @@ namespace GDI__Assignment_ASE
 
                         multiline cpl = new multiline(multiline.Text, graphics,fv.fillvalue);
                         cpl.variables();
-                        /*String multi = multiline.Text;
-                        String[] split_command = multi.Split('\n');
-                        foreach (String i in split_command)
-                        {
-                            d.draw(graphics, i, fv.fillvalue);
-                        }*/
                     }
                     else
                     {
@@ -119,7 +113,6 @@ namespace GDI__Assignment_ASE
             if (openFileDialog1.ShowDialog() == DialogResult.OK)
             {
                 String file = openFileDialog1.FileName;
-                //multiline.Text = file;
                 var data = File.ReadAllText(file);
                 multiline.Text = data;
 
@@ -133,23 +126,19 @@ namespace GDI__Assignment_ASE
             {
                 StreamWriter file = new StreamWriter(saveFileDialog1.FileName);
                 file.Write(multiline.Text);
-                //multiline.Text = file;
                 file.Close();
             }
         }
+
+        private void reset_Click(object sender, EventArgs e)
+        {
+            drawingcanvas.Image = new Bitmap(drawingcanvas.Width, drawingcanvas.Height);
+            reset r = new reset(singleline.Text, multiline.Text);
+            singleline.Text = r.do_reset();
+            multiline.Text = r.do_reset();
+            fillvalue.Text = r.do_reset();
+            var graphics = Graphics.FromImage(drawingcanvas.Image);
+            graphics.Clear(Color.White);
+        }
     }
 }
-
-
-            /* String command = singleline.Text.ToLower();
-           // graphics.Clear(Color.White);
-
-
-                 if (command == "drawto")
-                 {
-                     d.drawto(150 , 40);
-                 }
-                 else if (command == "rectangle")
-                 {
-                     d.rectangle(80 ,80);
-                 }*/
