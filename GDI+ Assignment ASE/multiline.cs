@@ -32,7 +32,7 @@ namespace GDI__Assignment_ASE
         /// to draw and will assign to the global class variables.
         /// </summary>
         /// <param name="code">The whole multiline box text</param>
-        /// <param name="g">The graphic variabe needed to draw</param>
+        /// <param name="g">The graphic variabe needed to draw</param>-
         /// <param name="fillvalue">The fillvalue in order to know whetheer the shape is to be drawn with
         /// fill or without fill</param>
         public multiline(String code, Graphics g, String fillvalue)
@@ -43,11 +43,10 @@ namespace GDI__Assignment_ASE
         }
 
      /// <summary>
-     /// This is the main method which will check the conditions and will run the commands by calling their respective class
+     /// This is the main method which will check the conditions and will run the commands by calling their respective class, this will include all the drawing as well as print , while loop , if condition and methods.
      /// </summary>
-     /// <returns></returns>
      /// <exception cref="ArgumentNullException"></exception>
-        public string multiline_main()
+        public void multiline_main()
         {
             if (g is null)
             {
@@ -239,7 +238,7 @@ namespace GDI__Assignment_ASE
 
 
                 // Increament/Decreament Condition ----------------------------------------------------------------------
-
+                
 
                 if (vars.Contains(split_command[0]) && split_command[1] == "=" && (split_command[2] == split_command[0]))
                 {
@@ -798,7 +797,6 @@ namespace GDI__Assignment_ASE
                 }
 
             }//for loop end
-            return "hello";
         }
     }
 }
