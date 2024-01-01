@@ -43,7 +43,7 @@ namespace GDI__Assignment_ASE
         /// This method will draw the a filled cirle.
         /// </summary>
         /// <param name="g">Graphic variable to draw a circle</param>
-        /// <param name="brush">Pen to draw a circle</param>
+        /// <param name="brush">Brush to draw a circle</param>
         /// <param name="xpos">x-position on the canvas where the circle is to be drawn</param>
         /// <param name="ypos">y-position on the canvas where the circle is to be drawn</param>
         /// <exception cref="ArgumentNullException">An exception to be thrown if the graphic variable is null</exception>
