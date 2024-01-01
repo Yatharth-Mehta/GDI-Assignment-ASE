@@ -18,7 +18,16 @@ namespace GDI__Assignment_ASE
         {
             InitializeComponent();
         }
-
+        /// <summary>
+        /// This class will activate when the Run button will be clicked.
+        /// If the user would have entered reset in the command line then it would call a Reset function
+        /// and the whole form will be cleared and reset.
+        /// If not then it will do the functions written in the command line and multiline.
+        /// If commands are written in multiline then run should be written in the command line in order to
+        /// multiline commands be executed.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void submit_Click(object sender, EventArgs e)
         {
             if (drawingcanvas.Image == null)
@@ -73,7 +82,7 @@ namespace GDI__Assignment_ASE
 
         private void syntax_Click(object sender, EventArgs e)
         {
-
+            
             drawingcanvas.Image = new Bitmap(drawingcanvas.Width, drawingcanvas.Height);
 
             var g = Graphics.FromImage(drawingcanvas.Image);
