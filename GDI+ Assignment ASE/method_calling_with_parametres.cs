@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace GDI__Assignment_ASE
 {
+    /// <summary>
+    /// This class is for method calling and it will be called whenever the method will contain arguements.
+    /// </summary>
     public class method_calling_with_parametres
     {
         String code;
@@ -15,6 +18,16 @@ namespace GDI__Assignment_ASE
         Graphics g;
         List<string> vars = new List<string>();
         List<string> values = new List<string>();
+
+        /// <summary>
+        /// This constructor will take values of the command , a graphic variable , fill value and take 2 lists.
+        /// </summary>
+        /// <param name="command">The command passed in the method block</param>
+        /// <param name="g">The Graphic variable</param>
+        /// <param name="fillvalue">Fill value to decide whether the object is to made with fill or without filled</param>
+        /// <param name="vars">List of created variables</param>
+        /// <param name="values">List of created variable's values</param>
+        /// <exception cref="ArgumentNullException"></exception>
         public method_calling_with_parametres(String command, Graphics g, String fillvalue, List<string> vars, List<string> values)
         {
             if (g is null)
@@ -27,6 +40,9 @@ namespace GDI__Assignment_ASE
             this.vars = vars;
             this.values = values;
         }
+        /// <summary>
+        /// The method that will check the command and will call the class of the action.
+        /// </summary>
         public void cmds()
         {
             String[] split_command = code.Split(' ');
