@@ -8,6 +8,10 @@ using System.Threading.Tasks;
 
 namespace GDI__Assignment_ASE
 {
+    /// <summary>
+    /// This class is for the method calling.
+    /// It will be called when the method does not have any parameters.
+    /// </summary>
     public class method_calling
     {
         String code;
@@ -15,6 +19,16 @@ namespace GDI__Assignment_ASE
         Graphics g;
         List<string> vars = new List<string>();
         List<string> values = new List<string>();
+
+        /// <summary>
+        /// This constructor will take the neccessary values and store in local variable.
+        /// </summary>
+        /// <param name="command">The command in the method block</param>
+        /// <param name="g">The Graphics variable</param>
+        /// <param name="fillvalue">Fill value to decide whether the object is to made with fill or without filled</param>
+        /// <param name="vars">List of created variables</param>
+        /// <param name="values">List of created variable's values</param>
+        /// <exception cref="ArgumentNullException"></exception>
         public method_calling(String command, Graphics g, String fillvalue, List<string> vars, List<string> values)
         {
             if (g is null)
@@ -27,6 +41,9 @@ namespace GDI__Assignment_ASE
             this.vars = vars;
             this.values = values;
         }
+        /// <summary>
+        /// This cmds method will call the classes of the command passed in the method block.
+        /// </summary>
         public void cmds()
         {
             String[] split_command = code.Split(' ');
