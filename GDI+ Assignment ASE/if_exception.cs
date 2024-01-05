@@ -9,10 +9,10 @@ namespace GDI__Assignment_ASE
 {
     public class if_exception : Exception
     {
-        public if_exception(Graphics g) 
+        public if_exception(Graphics g,int ypos) 
         {
             Font f = new Font("Arial", 14);
-            g.DrawString("Invalid 'if' command", f, Brushes.Red, new Point(50, 50));
+            g.DrawString("Invalid 'if' command", f, Brushes.Red, new Point(0, ypos));
         }
     }
 }

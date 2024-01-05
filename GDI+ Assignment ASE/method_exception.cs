@@ -9,10 +9,10 @@ namespace GDI__Assignment_ASE
 {
     public class method_exception : Exception
     {
-        public method_exception(Graphics g)
+        public method_exception(Graphics g , int ypos)
         {
                 Font f = new Font("Arial", 14);
-                g.DrawString("Invalid 'method' command", f, Brushes.Red, new Point(50, 50));
+                g.DrawString("Invalid 'method' command", f, Brushes.Red, new Point(0, ypos));
         }
     }
 }

@@ -132,7 +132,7 @@ namespace GDI__Assignment_ASE.Properties
             {
                 try
                 {
-                    throw new Not_a_valid_command_exception(g);
+                    throw new Not_a_valid_command_exception(g, 0);
                 }
                 catch { }
             }

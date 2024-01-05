@@ -262,7 +262,7 @@ namespace GDI__Assignment_ASE
                     {
                         try
                         {
-                            throw new if_exception(g);
+                            throw new if_exception(g,0);
                         }
                         catch { }
                         break;
@@ -566,7 +566,7 @@ namespace GDI__Assignment_ASE
                     {
                         try
                         {
-                            throw new while_exception(g);
+                            throw new while_exception(g, 0);
                         }
                         catch { }
                         break;
@@ -740,7 +740,7 @@ namespace GDI__Assignment_ASE
 
                 else if (split_command[0] == "method")
                 {
-                    if (split_command[1].Contains("(") && split_command[1].Contains(")"))
+                    if (split_command[1].Contains('(') && split_command[1].Contains(')'))
                     {
 
                         String[] method_name = split_command[1].Trim().Split('(', ')');
@@ -783,7 +783,7 @@ namespace GDI__Assignment_ASE
                     {
                         try
                         {
-                            throw new method_exception(g);
+                            throw new method_exception(g,0);
                         }
                         catch { }
                         break;

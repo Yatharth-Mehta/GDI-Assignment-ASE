@@ -9,7 +9,7 @@ namespace GDI__Assignment_ASE
 {
     public class syntax_checking
     {
-        public int check(String command , Graphics g,int ypos)
+        public int check(String command, Graphics g, int ypos)
         {
             int flag = 1;
             String cmdline = command;
@@ -25,6 +25,12 @@ namespace GDI__Assignment_ASE
             commandlist.Add("drawto");
             commandlist.Add("clear");
             commandlist.Add("reset");
+            commandlist.Add("if");
+            commandlist.Add("while");
+            commandlist.Add("method");
+            commandlist.Add("endif");
+            commandlist.Add("endloop");
+            commandlist.Add("endmethod");
 
             try
             {
@@ -32,7 +38,7 @@ namespace GDI__Assignment_ASE
                 {
                     if (cmdline == "")
                     {
-                        throw new cmdline_empty_exception(g,ypos);
+                        throw new cmdline_empty_exception(g, ypos);
                     }
 
                     if (split_command[0] == "circle")
@@ -45,7 +51,7 @@ namespace GDI__Assignment_ASE
                         }
                         else
                         {
-                            throw new circle_exception(g,ypos);
+                            throw new circle_exception(g, ypos);
                         }
                     }
 
@@ -60,7 +66,7 @@ namespace GDI__Assignment_ASE
                         }
                         else
                         {
-                            throw new rectangle_sqaure_exception(g,ypos);
+                            throw new rectangle_sqaure_exception(g, ypos);
                         }
                     }
 
@@ -75,7 +81,7 @@ namespace GDI__Assignment_ASE
                         }
                         else
                         {
-                            throw new triangle_exception(g,ypos);
+                            throw new triangle_exception(g, ypos);
                         }
                     }
 
@@ -90,7 +96,7 @@ namespace GDI__Assignment_ASE
                         }
                         else
                         {
-                            throw new clear_exception(g,ypos);
+                            throw new clear_exception(g, ypos);
                         }
                     }
 
@@ -105,13 +111,58 @@ namespace GDI__Assignment_ASE
                         }
                         else
                         {
-                            throw new reset_exception(g,ypos);
+                            throw new reset_exception(g, ypos);
+                        }
+                    }
+
+                    if (split_command[0] == "if")
+                    {
+                        int total_ele = split_command.Count();
+                        if (total_ele == 4)
+                        {
+                            Font f = new Font("Arial", 14);
+                            g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(0, ypos));
+                        }
+                        else
+                        {
+                            throw new if_exception(g, ypos);
+                        }
+                    }
+
+                    if (split_command[0] == "while")
+                    {
+                        int total_ele = split_command.Count();
+                        if (total_ele == 4)
+                        {
+                            Font f = new Font("Arial", 14);
+                            g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(0, ypos));
+                        }
+                        else
+                        {
+                            throw new while_exception(g, ypos);
+                        }
+                    }
+
+                    if (split_command[0] == "method")
+                    {
+                        int total_ele = split_command.Count();
+                        if (split_command[1].Contains('(') && split_command[1].Contains(')'))
+                        {
+                            if (total_ele == 2)
+                            {
+                                Font f = new Font("Arial", 14);
+                                g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(0, ypos));
+                            }
+                        }
+                        else
+                        {
+                            throw new method_exception(g, ypos);
                         }
                     }
                 }
                 else
                 {
-                    throw new Not_a_valid_command_exception(g,ypos);
+                    throw new Not_a_valid_command_exception(g, ypos);
                 }
             }
             catch
