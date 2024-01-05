@@ -38,9 +38,9 @@ namespace GDI__Assignment_ASE
         /// </summary>
         public void iterate()
         {
-            String code = command + "\n" + "Hello";
+            String[] code = command.Split(' ');
             Font f = new Font("Arial", 14);
-            g.DrawString(code, f, Brushes.Red, new Point(50, 50));
+            g.DrawString(command, f, Brushes.Red, new Point(50, 50));
         }
     }
 }

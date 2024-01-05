@@ -16,7 +16,7 @@ namespace GDI__Assignment_ASE.Tests
         public void drawTest()
         {
             triangle tr = new triangle(null,null);
-            tr.draw(null,null,0,0);
+            tr.draw(null,null,0,0,0,0,0,0,0,0);
 
         }
     }

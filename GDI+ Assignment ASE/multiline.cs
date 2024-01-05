@@ -21,10 +21,10 @@ namespace GDI__Assignment_ASE
         String fillvalue;
         List<string> vars = new List<string>();
         List<string> values = new List<string>();
-        List<string> meth_vars= new List<string>();
+        List<string> meth_vars = new List<string>();
         List<string> meth_values = new List<string>();
-        List<string> methods= new List<string>();
-        List<string> method_commands= new List<string>();
+        List<string> methods = new List<string>();
+        List<string> method_commands = new List<string>();
         Graphics g;
 
         /// <summary>
@@ -42,10 +42,10 @@ namespace GDI__Assignment_ASE
             this.fillvalue = fillvalue;
         }
 
-     /// <summary>
-     /// This is the main method which will check the conditions and will run the commands by calling their respective class, this will include all the drawing as well as print , while loop , if condition and methods.
-     /// </summary>
-     /// <exception cref="ArgumentNullException"></exception>
+        /// <summary>
+        /// This is the main method which will check the conditions and will run the commands by calling their respective class, this will include all the drawing as well as print , while loop , if condition and methods.
+        /// </summary>
+        /// <exception cref="ArgumentNullException"></exception>
         public void multiline_main()
         {
             if (g is null)
@@ -66,6 +66,8 @@ namespace GDI__Assignment_ASE
             for (int i = 0; i < lines.Length; i++)
             {
                 String[] split_command = lines[i].Split(' ');
+                String pattern = @"^([a-zA-Z_]\w*)\(([\w,]+)\)?$";
+                Match m = Regex.Match(split_command[0].Trim(), pattern);
 
                 // Shape Drawing Condition ----------------------------------------------------------------------
 
@@ -139,7 +141,7 @@ namespace GDI__Assignment_ASE
                                 int element3 = vars.IndexOf(second_value[1]);
                                 int element4 = vars.IndexOf(third_value[0]);
                                 int element5 = vars.IndexOf(third_value[1]);
-                                String square_command = split_command[0] + " " + values[element] + "," + values[element1] + " " + values[element2] + "," + values[element3] + " " + values[element4] + "," + values[element5] ;
+                                String square_command = split_command[0] + " " + values[element] + "," + values[element1] + " " + values[element2] + "," + values[element3] + " " + values[element4] + "," + values[element5];
                                 Drawing d = new Drawing();
                                 d.draw(g, square_command, fillvalue);
                             }
@@ -178,7 +180,7 @@ namespace GDI__Assignment_ASE
                 // Variable Creation ----------------------------------------------------------------------
 
 
-                if (split_command.Contains("="))
+                else if (split_command.Contains("="))
                 {
                     vars.Add(split_command[0]);
                     values.Add(split_command[2]);
@@ -238,9 +240,9 @@ namespace GDI__Assignment_ASE
 
 
                 // Increament/Decreament Condition ----------------------------------------------------------------------
-                
 
-                if (vars.Contains(split_command[0]) && split_command[1] == "=" && (split_command[2] == split_command[0]))
+
+                else if (vars.Contains(split_command[0]) && split_command[1] == "=" && (split_command[2] == split_command[0]))
                 {
                     variables_operation vo = new variables_operation(values, vars);
                     int element = vars.IndexOf(split_command[2]);
@@ -252,7 +254,7 @@ namespace GDI__Assignment_ASE
                 // If Condition ----------------------------------------------------------------------
 
 
-                if (split_command[0] == "if")
+                else if (split_command[0] == "if")
                 {
                     if_condition ifc = new if_condition(g, split_command[2]);
                     String valid = ifc.if_statement();
@@ -265,7 +267,7 @@ namespace GDI__Assignment_ASE
 
                     else
                     {
-                        if (vars.Contains(split_command[1]) && int.TryParse(split_command[3],out _))
+                        if (vars.Contains(split_command[1]) && int.TryParse(split_command[3], out _))
                         {
                             int element_ = vars.IndexOf(split_command[1]);
                             if (valid == "==")
@@ -551,7 +553,7 @@ namespace GDI__Assignment_ASE
                 // While Loop ----------------------------------------------------------------------
 
 
-                if (split_command[0] == "while")
+                else if (split_command[0] == "while")
                 {
                     while_loop wl = new while_loop(split_command[2]);
                     String condition = wl.validation();
@@ -571,15 +573,15 @@ namespace GDI__Assignment_ASE
                             if (condition == "==")
                             {
                                 int element_ = vars.IndexOf(split_command[1]);
-                                while (values[element_] == split_command[3])
+                                if (values[element_] == split_command[3])
                                 {
                                     for (int j = i + 1; j < lines.Length; j++)
                                     {
                                         if (lines[j].Trim() == "endloop")
                                         {
-                                            while_iteration wi = new while_iteration(lines[i],g,fillvalue);
+                                            while_iteration wi = new while_iteration(lines[i], g, fillvalue);
                                             wi.iterate();
-                                            i = j; 
+                                            i = j;
                                             break;
                                         }
                                         else
@@ -626,7 +628,7 @@ namespace GDI__Assignment_ASE
                                     {
                                         if (lines[j].Trim() == "endloop")
                                         {
-                                            while_iteration wi = new while_iteration(split_command[0]+ " " + split_command[1] + " " + split_command[2] + " " + split_command[3], g, fillvalue);
+                                            while_iteration wi = new while_iteration(split_command[0] + " " + split_command[1] + " " + split_command[2] + " " + split_command[3], g, fillvalue);
                                             wi.iterate();
                                             i = j; break;
                                         }
@@ -728,7 +730,7 @@ namespace GDI__Assignment_ASE
                 // Method Creation ----------------------------------------------------------------------
 
 
-                if (split_command[0] == "method")
+                else if (split_command[0] == "method")
                 {
                     String[] method_name = split_command[1].Trim().Split('(', ')');
                     String[] parameters = method_name[1].Trim().Split(',');
@@ -767,9 +769,8 @@ namespace GDI__Assignment_ASE
                     }
                 }
 
-                String pattern = @"^([a-zA-Z_]\w*)\(([\w,]+)\)?$";
-                Match m = Regex.Match(split_command[0].Trim(), pattern);
-                if (m.Success)
+
+                else if (m.Success)
                 {
                     String[] split_call = split_command[0].Trim().Split('(', ')');
                     String[] par = split_call[1].Split(',');
@@ -778,7 +779,7 @@ namespace GDI__Assignment_ASE
                         meth_values.Add(par[j]);
 
                     }
-                  
+
                     for (int j = 0; j < method_commands.Count(); j++)
                     {
                         method_calling_with_parametres mc = new method_calling_with_parametres(method_commands[j], g, fillvalue, meth_vars, meth_values);
@@ -786,7 +787,7 @@ namespace GDI__Assignment_ASE
                     }
                 }
 
-                if (methods.Contains(split_command[0]))
+                else if (methods.Contains(split_command[0]))
                 {
                     for (int j = 0; j < method_commands.Count(); j++)
                     {
