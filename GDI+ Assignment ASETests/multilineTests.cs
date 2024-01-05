@@ -16,7 +16,7 @@ namespace GDI__Assignment_ASE.Tests
         public void variablesTest()
         {
             multiline ml = new multiline(null, null,null);
-            ml.variables();
+            ml.multiline_main();
         }
     }
 }

@@ -242,7 +242,6 @@ namespace GDI__Assignment_ASE
 
                 if (vars.Contains(split_command[0]) && split_command[1] == "=" && (split_command[2] == split_command[0]))
                 {
-
                     variables_operation vo = new variables_operation(values, vars);
                     int element = vars.IndexOf(split_command[2]);
                     values[element] = vo.new_value(lines[i]);
