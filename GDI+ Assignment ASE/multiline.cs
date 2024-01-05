@@ -796,6 +796,18 @@ namespace GDI__Assignment_ASE
                     }
                 }
 
+                else
+                {
+                    try
+                    {
+                        
+                        throw new Invalid_command_in_multiline(g,i);
+//                        throw new Not_a_valid_command_exception(g);
+                    }
+                    catch { }
+                    break;
+                }
+
             }//for loop end
         }
     }
