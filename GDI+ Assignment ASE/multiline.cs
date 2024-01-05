@@ -260,8 +260,12 @@ namespace GDI__Assignment_ASE
                     String valid = ifc.if_statement();
                     if (valid == "false")
                     {
-                        Font f = new Font("Arial", 14);
-                        g.DrawString("Invalid 'if' command", f, Brushes.Red, new Point(50, 50));
+                        try
+                        {
+                            throw new if_exception(g);
+                        }
+                        catch { }
+                        break;
                     }
 
 
@@ -796,7 +800,7 @@ namespace GDI__Assignment_ASE
                     }
                 }
 
-                else
+                else if (lines[i] != "endif" || lines[i] != "endloop" || lines[i] != "endmethod")
                 {
                     try
                     {
