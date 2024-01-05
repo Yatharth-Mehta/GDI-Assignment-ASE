@@ -9,7 +9,7 @@ namespace GDI__Assignment_ASE
 {
     public class syntax_checking
     {
-        public int check(String command , Graphics g)
+        public int check(String command , Graphics g,int ypos)
         {
             int flag = 1;
             String cmdline = command;
@@ -32,7 +32,7 @@ namespace GDI__Assignment_ASE
                 {
                     if (cmdline == "")
                     {
-                        throw new cmdline_empty_exception(g);
+                        throw new cmdline_empty_exception(g,ypos);
                     }
 
                     if (split_command[0] == "circle")
@@ -41,26 +41,26 @@ namespace GDI__Assignment_ASE
                         if (total_ele == 2 && int.TryParse(split_command[1], out _))
                         {
                             Font f = new Font("Arial", 14);
-                            g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(50, 50));
+                            g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(0, ypos));
                         }
                         else
                         {
-                            throw new circle_exception(g);
+                            throw new circle_exception(g,ypos);
                         }
                     }
 
 
-                    if (split_command[0] == "rectangle" || split_command[0] == "sqaure")
+                    if (split_command[0] == "rectangle" || split_command[0] == "square")
                     {
                         int total_ele = split_command.Count();
                         if (total_ele == 3 && int.TryParse(split_command[1], out _) && int.TryParse(split_command[2], out _))
                         {
                             Font f = new Font("Arial", 14);
-                            g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(50, 50));
+                            g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(0, ypos));
                         }
                         else
                         {
-                            throw new rectangle_sqaure_exception(g);
+                            throw new rectangle_sqaure_exception(g,ypos);
                         }
                     }
 
@@ -71,47 +71,47 @@ namespace GDI__Assignment_ASE
                         if (total_ele == 4)
                         {
                             Font f = new Font("Arial", 14);
-                            g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(50, 50));
+                            g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(0, ypos));
                         }
                         else
                         {
-                            throw new triangle_exception(g);
+                            throw new triangle_exception(g,ypos);
                         }
                     }
 
 
-                    if (split_command[0] == "clear")
+                    if (split_command[0].Trim() == "clear")
                     {
                         int total_ele = split_command.Count();
                         if (total_ele == 1)
                         {
                             Font f = new Font("Arial", 14);
-                            g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(50, 50));
+                            g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(0, ypos));
                         }
                         else
                         {
-                            throw new clear_exception(g);
+                            throw new clear_exception(g,ypos);
                         }
                     }
 
 
-                    if (split_command[0] == "reset")
+                    if (split_command[0].Trim() == "reset")
                     {
                         int total_ele = split_command.Count();
                         if (total_ele == 1)
                         {
                             Font f = new Font("Arial", 14);
-                            g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(50, 50));
+                            g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(0, ypos));
                         }
                         else
                         {
-                            throw new reset_exception(g);
+                            throw new reset_exception(g,ypos);
                         }
                     }
                 }
                 else
                 {
-                    throw new Not_a_valid_command_exception(g);
+                    throw new Not_a_valid_command_exception(g,ypos);
                 }
             }
             catch

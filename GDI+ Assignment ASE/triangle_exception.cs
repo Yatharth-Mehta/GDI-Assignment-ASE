@@ -9,10 +9,10 @@ namespace GDI__Assignment_ASE
 {
     public class triangle_exception : Exception
     {
-        public triangle_exception(Graphics g)
+        public triangle_exception(Graphics g,int ypos)
         {
             Font f = new Font("Arial", 14);
-            g.DrawString("Give valid command of Triangle!", f, Brushes.Red, new Point(50, 50));
+            g.DrawString("Give valid command of Triangle!", f, Brushes.Red, new Point(0, ypos));
         }
     }
 }

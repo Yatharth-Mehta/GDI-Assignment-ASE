@@ -9,10 +9,10 @@ namespace GDI__Assignment_ASE
 {
     public class Not_a_valid_command_exception : Exception
     {
-        public Not_a_valid_command_exception(Graphics g)
+        public Not_a_valid_command_exception(Graphics g,int ypos)
         {
             Font f = new Font("Arial", 14);
-            g.DrawString("Enter a valid command !", f, Brushes.Red, new Point(50, 50));
+            g.DrawString("Enter a valid command !", f, Brushes.Red, new Point(0, ypos));
         }
     }
 }

@@ -90,15 +90,18 @@ namespace GDI__Assignment_ASE
 
                     String multi = multiline.Text;
                     String[] split_command = multi.Split('\n');
+                    int y = 0;
                     foreach (String i in split_command)
                     {
-                        sc.check(i, g);
+                           sc.check(i, g,y);
+                           y += 20;
+                       
                     }
                 }
             }
             else
             {
-                sc.check(singleline.Text, g);
+                sc.check(singleline.Text, g,50);
             }
         }
         private void Form1_Load(object sender, EventArgs e)
