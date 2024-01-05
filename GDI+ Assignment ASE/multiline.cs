@@ -564,8 +564,12 @@ namespace GDI__Assignment_ASE
 
                     if (condition == "false")
                     {
-                        Font f = new Font("Arial", 14);
-                        g.DrawString("Invalid While condition", f, Brushes.Red, new Point(50, 50));
+                        try
+                        {
+                            throw new while_exception(g);
+                        }
+                        catch { }
+                        break;
                     }
 
                     if (condition != "false")
