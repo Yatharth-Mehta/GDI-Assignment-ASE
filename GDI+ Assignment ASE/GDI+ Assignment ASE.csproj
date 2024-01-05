@@ -57,6 +57,7 @@
     <Compile Include="Invalid_command_in_multiline.cs" />
     <Compile Include="method_calling.cs" />
     <Compile Include="method_calling_with_parametres.cs" />
+    <Compile Include="method_exception.cs" />
     <Compile Include="multiline.cs" />
     <Compile Include="Drawing.cs" />
     <Compile Include="fill.cs" />

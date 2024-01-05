@@ -740,40 +740,53 @@ namespace GDI__Assignment_ASE
 
                 else if (split_command[0] == "method")
                 {
-                    String[] method_name = split_command[1].Trim().Split('(', ')');
-                    String[] parameters = method_name[1].Trim().Split(',');
-                    methods.Add(method_name[0] + "()");
-                    if (parameters == null)
+                    if (split_command[1].Contains("(") && split_command[1].Contains(")"))
                     {
-                        for (int j = i + 1; j < lines.Length; j++)
+
+                        String[] method_name = split_command[1].Trim().Split('(', ')');
+                        String[] parameters = method_name[1].Trim().Split(',');
+                        methods.Add(method_name[0] + "()");
+                        if (parameters == null)
                         {
-                            if (lines[j].Trim() == "endmethod")
+                            for (int j = i + 1; j < lines.Length; j++)
                             {
-                                i = j; break;
+                                if (lines[j].Trim() == "endmethod")
+                                {
+                                    i = j; break;
+                                }
+                                else
+                                {
+                                    method_commands.Add(lines[j]);
+                                }
                             }
-                            else
+                        }
+                        else
+                        {
+                            for (int j = 0; j < parameters.Length; j++)
                             {
-                                method_commands.Add(lines[j]);
+                                meth_vars.Add(parameters[j]);
+                            }
+                            for (int j = i + 1; j < lines.Length; j++)
+                            {
+                                if (lines[j].Trim() == "endmethod")
+                                {
+                                    i = j; break;
+                                }
+                                else
+                                {
+                                    method_commands.Add(lines[j]);
+                                }
                             }
                         }
                     }
                     else
                     {
-                        for (int j = 0; j < parameters.Length; j++)
+                        try
                         {
-                            meth_vars.Add(parameters[j]);
+                            throw new method_exception(g);
                         }
-                        for (int j = i + 1; j < lines.Length; j++)
-                        {
-                            if (lines[j].Trim() == "endmethod")
-                            {
-                                i = j; break;
-                            }
-                            else
-                            {
-                                method_commands.Add(lines[j]);
-                            }
-                        }
+                        catch { }
+                        break;
                     }
                 }
 
@@ -808,9 +821,9 @@ namespace GDI__Assignment_ASE
                 {
                     try
                     {
-                        
-                        throw new Invalid_command_in_multiline(g,i);
-//                        throw new Not_a_valid_command_exception(g);
+
+                        throw new Invalid_command_in_multiline(g, i);
+                        //                        throw new Not_a_valid_command_exception(g);
                     }
                     catch { }
                     break;
