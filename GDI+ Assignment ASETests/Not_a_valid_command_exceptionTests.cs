@@ -8,9 +8,15 @@ using System.Threading.Tasks;
 
 namespace GDI__Assignment_ASE.Tests
 {
+    /// <summary>
+    /// This is a unit test for cmdline_empty_exception class. 
+    /// </summary>
     [TestClass()]
     public class Not_a_valid_command_exceptionTests
     {
+        /// <summary>
+        /// This passes null for Graphic object which will throw an exception.
+        /// </summary>
         [TestMethod()]
         [ExpectedException(typeof(ArgumentNullException), "The Exception not found")]
 
