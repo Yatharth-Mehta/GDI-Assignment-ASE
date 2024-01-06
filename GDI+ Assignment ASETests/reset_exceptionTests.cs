@@ -8,9 +8,15 @@ using System.Threading.Tasks;
 
 namespace GDI__Assignment_ASE.Tests
 {
+    /// <summary>
+    /// This is a unit test for reset_exception class. 
+    /// </summary>
     [TestClass()]
     public class reset_exceptionTests
     {
+        /// <summary>
+        /// This passes null for Graphic object which will throw an exception.
+        /// </summary>
         [TestMethod()]
         public void reset_exceptionTest()
         {
