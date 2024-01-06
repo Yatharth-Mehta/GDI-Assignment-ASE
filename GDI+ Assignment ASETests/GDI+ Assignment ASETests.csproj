@@ -84,6 +84,7 @@
     <Compile Include="triangle_exceptionTests.cs" />
     <Compile Include="variables_operationTests.cs" />
     <Compile Include="while_callingTests.cs" />
+    <Compile Include="while_exceptionTests.cs" />
     <Compile Include="while_iterationTests.cs" />
     <Compile Include="while_loopTests.cs" />
   </ItemGroup>
