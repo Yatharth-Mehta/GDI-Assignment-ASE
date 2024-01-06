@@ -11,6 +11,10 @@ namespace GDI__Assignment_ASE
     {
         public if_exception(Graphics g,int ypos) 
         {
+            if (g is null)
+            {
+                throw new ArgumentNullException(nameof(g));
+            }
             Font f = new Font("Arial", 14);
             g.DrawString("Invalid 'if' command", f, Brushes.Red, new Point(0, ypos));
         }
