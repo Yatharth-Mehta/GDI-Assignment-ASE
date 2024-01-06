@@ -38,7 +38,15 @@ namespace GDI__Assignment_ASE
             graphics.Clear(Color.White);
 
             fill fv = new fill(graphics);
-            fv.fillvalue = fillvalue.Text;
+            if (fill_on.Checked)
+            {
+
+                fv.fillvalue = "on";
+            }
+            else
+            {
+                fv.fillvalue = "off";
+            }
             Drawing d = new Drawing();
 
             if (singleline.Text.Equals("reset"))
@@ -46,7 +54,8 @@ namespace GDI__Assignment_ASE
                 reset r = new reset(singleline.Text, multiline.Text);
                 singleline.Text = r.do_reset();
                 multiline.Text = r.do_reset();
-                fillvalue.Text = r.do_reset();
+                fill_on.Checked = false;
+                fill_off.Checked = false;
                 graphics.Clear(Color.White);
             }
             else
@@ -139,9 +148,19 @@ namespace GDI__Assignment_ASE
             reset r = new reset(singleline.Text, multiline.Text);
             singleline.Text = r.do_reset();
             multiline.Text = r.do_reset();
-            fillvalue.Text = r.do_reset();
+            fill_on.Checked = false;
+            fill_off.Checked = false; 
             var graphics = Graphics.FromImage(drawingcanvas.Image);
             graphics.Clear(Color.White);
+        }
+
+        private void radioButton1_CheckedChanged(object sender, EventArgs e)
+        {
+        }
+
+        private void fill_off_CheckedChanged(object sender, EventArgs e)
+        {
+           
         }
     }
 }

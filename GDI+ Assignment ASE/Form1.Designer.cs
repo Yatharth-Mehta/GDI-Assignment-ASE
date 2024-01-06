@@ -34,12 +34,13 @@
             this.drawingcanvas = new System.Windows.Forms.PictureBox();
             this.singleline = new System.Windows.Forms.TextBox();
             this.multiline = new System.Windows.Forms.TextBox();
-            this.fillvalue = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.openfile = new System.Windows.Forms.Button();
             this.openFileDialog1 = new System.Windows.Forms.OpenFileDialog();
             this.savebutton = new System.Windows.Forms.Button();
             this.saveFileDialog1 = new System.Windows.Forms.SaveFileDialog();
+            this.fill_on = new System.Windows.Forms.RadioButton();
+            this.fill_off = new System.Windows.Forms.RadioButton();
             ((System.ComponentModel.ISupportInitialize)(this.drawingcanvas)).BeginInit();
             this.SuspendLayout();
             // 
@@ -102,23 +103,15 @@
             this.multiline.Size = new System.Drawing.Size(423, 571);
             this.multiline.TabIndex = 5;
             // 
-            // fillvalue
-            // 
-            this.fillvalue.Location = new System.Drawing.Point(480, 699);
-            this.fillvalue.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.fillvalue.Name = "fillvalue";
-            this.fillvalue.Size = new System.Drawing.Size(107, 22);
-            this.fillvalue.TabIndex = 6;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(385, 703);
+            this.label1.Location = new System.Drawing.Point(477, 703);
             this.label1.Margin = new System.Windows.Forms.Padding(4, 0, 4, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(79, 16);
+            this.label1.Size = new System.Drawing.Size(85, 16);
             this.label1.TabIndex = 7;
-            this.label1.Text = "FILL VALUE";
+            this.label1.Text = "FILL VALUE :";
             // 
             // openfile
             // 
@@ -146,15 +139,40 @@
             this.savebutton.UseVisualStyleBackColor = true;
             this.savebutton.Click += new System.EventHandler(this.savebutton_Click);
             // 
+            // fill_on
+            // 
+            this.fill_on.AutoSize = true;
+            this.fill_on.Location = new System.Drawing.Point(573, 701);
+            this.fill_on.Name = "fill_on";
+            this.fill_on.Size = new System.Drawing.Size(48, 20);
+            this.fill_on.TabIndex = 10;
+            this.fill_on.TabStop = true;
+            this.fill_on.Text = "ON";
+            this.fill_on.UseVisualStyleBackColor = true;
+            this.fill_on.CheckedChanged += new System.EventHandler(this.radioButton1_CheckedChanged);
+            // 
+            // fill_off
+            // 
+            this.fill_off.AutoSize = true;
+            this.fill_off.Location = new System.Drawing.Point(640, 701);
+            this.fill_off.Name = "fill_off";
+            this.fill_off.Size = new System.Drawing.Size(54, 20);
+            this.fill_off.TabIndex = 11;
+            this.fill_off.TabStop = true;
+            this.fill_off.Text = "OFF";
+            this.fill_off.UseVisualStyleBackColor = true;
+            this.fill_off.CheckedChanged += new System.EventHandler(this.fill_off_CheckedChanged);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(963, 742);
+            this.Controls.Add(this.fill_off);
+            this.Controls.Add(this.fill_on);
             this.Controls.Add(this.savebutton);
             this.Controls.Add(this.openfile);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.fillvalue);
             this.Controls.Add(this.multiline);
             this.Controls.Add(this.singleline);
             this.Controls.Add(this.drawingcanvas);
@@ -179,12 +197,13 @@
         private System.Windows.Forms.PictureBox drawingcanvas;
         private System.Windows.Forms.TextBox singleline;
         private System.Windows.Forms.TextBox multiline;
-        private System.Windows.Forms.TextBox fillvalue;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Button openfile;
         private System.Windows.Forms.OpenFileDialog openFileDialog1;
         private System.Windows.Forms.Button savebutton;
         private System.Windows.Forms.SaveFileDialog saveFileDialog1;
+        private System.Windows.Forms.RadioButton fill_on;
+        private System.Windows.Forms.RadioButton fill_off;
     }
 }
 
