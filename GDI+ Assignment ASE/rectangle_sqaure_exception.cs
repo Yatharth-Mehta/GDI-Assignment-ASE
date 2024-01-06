@@ -11,6 +11,10 @@ namespace GDI__Assignment_ASE
     {
         public rectangle_sqaure_exception(Graphics g,int ypos)
         {
+            if (g is null)
+            {
+                throw new ArgumentNullException(nameof(g));
+            }
             Font f = new Font("Arial", 14);
             g.DrawString("Give proper parameters to Rectangle !", f, Brushes.Red, new Point(0, ypos));
         }
