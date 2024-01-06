@@ -9,10 +9,14 @@ namespace GDI__Assignment_ASE
 {
     public class clear_exception : Exception
     {
-           public clear_exception(Graphics g,int ypos)
+        public clear_exception(Graphics g, int ypos)
+        {
+            if (g is null)
             {
-                Font f = new Font("Arial", 14);
-                g.DrawString("Give valid command of Clear!", f, Brushes.Red, new Point(0, ypos));
+                throw new ArgumentNullException(nameof(g));
             }
+            Font f = new Font("Arial", 14);
+            g.DrawString("Give valid command of Clear!", f, Brushes.Red, new Point(0, ypos));
+        }
     }
 }
