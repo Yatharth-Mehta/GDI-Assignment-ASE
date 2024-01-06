@@ -67,6 +67,7 @@
     <Compile Include="if_conditionTests.cs" />
     <Compile Include="if_condition_callingTests.cs" />
     <Compile Include="if_exceptionTests.cs" />
+    <Compile Include="Invalid_command_in_multilineTests.cs" />
     <Compile Include="method_callingTests.cs" />
     <Compile Include="method_calling_with_parametresTests.cs" />
     <Compile Include="multilineTests.cs" />

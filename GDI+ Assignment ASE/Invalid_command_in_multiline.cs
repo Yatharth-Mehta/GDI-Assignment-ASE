@@ -12,6 +12,10 @@ namespace GDI__Assignment_ASE
     {
         public Invalid_command_in_multiline(Graphics g , int line)
         {
+            if (g is null)
+            {
+                throw new ArgumentNullException(nameof(g));
+            }
             Font f = new Font("Arial", 14);
             g.DrawString("Enter a valid command at line " + (line+1) + " !", f, Brushes.Red, new Point(50, 50));
         }
