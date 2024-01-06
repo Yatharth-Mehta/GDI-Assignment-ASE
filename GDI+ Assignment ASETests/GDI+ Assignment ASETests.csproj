@@ -61,6 +61,7 @@
     <Compile Include="circle_exceptionTests.cs" />
     <Compile Include="clearTests.cs" />
     <Compile Include="clear_exceptionTests.cs" />
+    <Compile Include="cmdline_empty_exceptionTests.cs" />
     <Compile Include="DrawingTests.cs" />
     <Compile Include="fillTests.cs" />
     <Compile Include="if_conditionTests.cs" />
