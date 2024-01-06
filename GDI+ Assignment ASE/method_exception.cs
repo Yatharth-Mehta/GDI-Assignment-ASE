@@ -11,7 +11,11 @@ namespace GDI__Assignment_ASE
     {
         public method_exception(Graphics g , int ypos)
         {
-                Font f = new Font("Arial", 14);
+            if (g is null)
+            {
+                throw new ArgumentNullException(nameof(g));
+            }
+            Font f = new Font("Arial", 14);
                 g.DrawString("Invalid 'method' command", f, Brushes.Red, new Point(0, ypos));
         }
     }

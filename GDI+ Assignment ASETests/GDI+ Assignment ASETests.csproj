@@ -70,6 +70,7 @@
     <Compile Include="Invalid_command_in_multilineTests.cs" />
     <Compile Include="method_callingTests.cs" />
     <Compile Include="method_calling_with_parametresTests.cs" />
+    <Compile Include="method_exceptionTests.cs" />
     <Compile Include="multilineTests.cs" />
     <Compile Include="open_buttonTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
