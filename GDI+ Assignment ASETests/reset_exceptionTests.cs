@@ -18,6 +18,7 @@ namespace GDI__Assignment_ASE.Tests
         /// This passes null for Graphic object which will throw an exception.
         /// </summary>
         [TestMethod()]
+        [ExpectedException(typeof(ArgumentNullException), "The Exception not found")]
         public void reset_exceptionTest()
         {
             reset_exception re = new reset_exception(null,0); 
