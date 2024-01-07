@@ -17,8 +17,8 @@ namespace GDI__Assignment_ASE
         /// will be used in the multiline.cs as the default value.
         /// </summary>
         /// <param name="g">The Graphics variable</param>
-        /// <exception cref="ArgumentNullException"></exception>
-        public fill(Graphics g)
+        /// <exception cref="ArgumentNullException">An exception to be thrown if the graphic variable is null</exception>
+        public fill(Graphics g) 
         {
             if (g is null)
             {
