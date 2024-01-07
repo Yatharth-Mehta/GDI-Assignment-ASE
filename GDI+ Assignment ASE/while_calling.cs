@@ -8,6 +8,9 @@ using System.Threading.Tasks;
 
 namespace GDI__Assignment_ASE
 {
+    /// <summary>
+    /// This class is used when while loop is used.
+    /// </summary>
     public class while_calling
     {
         String code;
@@ -15,6 +18,16 @@ namespace GDI__Assignment_ASE
         Graphics g;
         List <string> vars = new List <string> ();
         List <string> values = new List <string> ();
+        /// <summary>
+        /// This constructor will take the values and store it in the local variables.
+        /// </summary>
+        /// <param name="command">The command given by the user in the while loop</param>
+        /// <param name="g">The graphic object used for drawing</param>
+        /// <param name="fillvalue">The value to check whether the shapes is to be drawn filled or non-filled</param>
+        /// <param name="vars">A list of variables to access variables</param>
+        /// <param name="values">A list of variable vallues to access them</param>
+        /// <exception cref="ArgumentNullException">An exception to be thrown if the graphic variable is null</exception>
+
         public while_calling(String command,Graphics g , String fillvalue,List <string> vars , List <string> values)
         {
             if (g is null)
@@ -27,6 +40,9 @@ namespace GDI__Assignment_ASE
             this.vars = vars;
             this.values = values;
         }
+        /// <summary>
+        /// This method will perform the actions according to the commands.
+        /// </summary>
         public void cmds()
         {
             String[] split_command = code.Split(' ');
