@@ -27,7 +27,8 @@ namespace GDI__Assignment_ASE
         /// <param name="fillvalue">Fill value to decide whether the object is to made with fill or without filled</param>
         /// <param name="vars">List of created variables</param>
         /// <param name="values">List of created variable's values</param>
-        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentNullException">An exception to be thrown if the graphic variable is null</exception>
+
         public if_condition_calling(String command, Graphics g, String fillvalue, List<string> vars, List<string> values)
         {
             if (g is null)
