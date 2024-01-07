@@ -45,7 +45,7 @@ namespace GDI__Assignment_ASE
         /// <summary>
         /// This is the main method which will check the conditions and will run the commands by calling their respective class, this will include all the drawing as well as print , while loop , if condition and methods.
         /// </summary>
-        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentNullException">An exception to be thrown if the graphic variable is null</exception>
         public void multiline_main()
         {
             if (g is null)
