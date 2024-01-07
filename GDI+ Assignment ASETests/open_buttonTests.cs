@@ -16,7 +16,7 @@ namespace GDI__Assignment_ASE.Tests
     {
 
         /// <summary>
-        /// In this method open button class is called and the Graphic object is passed null to create an exception.
+        /// In this method open button class is called and the Sender object is passed null to create an exception.
         /// </summary>
         [TestMethod()]
         [ExpectedException(typeof(ArgumentNullException), "The Exception not found")]
