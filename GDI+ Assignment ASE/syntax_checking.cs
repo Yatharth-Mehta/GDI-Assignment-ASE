@@ -40,6 +40,7 @@ namespace GDI__Assignment_ASE
             commandlist.Add("method");
             commandlist.Add("endloop");
             commandlist.Add("endmethod");
+            commandlist.Add("print");
 
             if (cmdline.StartsWith("endif"))
             {
@@ -90,7 +91,7 @@ namespace GDI__Assignment_ASE
             {
                 if (commandlist.Contains(split_command[0]))
                 {
-                  
+
 
                     if (split_command[0] == "circle")
                     {
@@ -208,6 +209,22 @@ namespace GDI__Assignment_ASE
                         else
                         {
                             throw new method_exception(g, ypos);
+                        }
+                    }
+
+                    if (split_command[0] == "print")
+                    {
+                        int total_ele = split_command.Count();
+
+                        if (total_ele == 2)
+                        {
+                            Font f = new Font("Arial", 14);
+                            g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(0, ypos));
+                        }
+
+                        else
+                        {
+                            throw new Not_a_valid_command_exception(g, ypos);
                         }
                     }
                 }
