@@ -19,14 +19,13 @@ namespace GDI__Assignment_ASE
         /// <param name="command">The command passed by user.</param>
         /// <param name="g">Graphic element for drawing string on canvas</param>
         /// <param name="ypos">The position of the text on Y-axis</param>
-        /// <returns>It will return a flag value of 1.</returns>
+        /// <returns>It will return the flag value.</returns>
         public int check(String command, Graphics g, int ypos)
         {
             int flag = 1;
             String cmdline = command;
             cmdline = cmdline.ToLower();
             String[] split_command = cmdline.Split(' ');
-
             List<string> commandlist = new List<string>();
             commandlist.Add("circle");
             commandlist.Add("rectangle");
@@ -39,9 +38,53 @@ namespace GDI__Assignment_ASE
             commandlist.Add("if");
             commandlist.Add("while");
             commandlist.Add("method");
-            commandlist.Add("endif");
             commandlist.Add("endloop");
             commandlist.Add("endmethod");
+
+            if (cmdline.StartsWith("endif"))
+            {
+                flag = 0;
+                if (cmdline.Trim() == "endif")
+                {
+                    Font f = new Font("Arial", 14);
+                    g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(0, ypos));
+                }
+            }
+            if (cmdline.StartsWith("endmethod"))
+            {
+                flag = 0;
+                if (cmdline.Trim() == "endmethod")
+                {
+                    Font f = new Font("Arial", 14);
+                    g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(0, ypos));
+                }
+            }
+            if (cmdline.StartsWith("endloop"))
+            {
+                flag = 0;
+                if (cmdline.Trim() == "endloop")
+                {
+                    Font f = new Font("Arial", 14);
+                    g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(0, ypos));
+                }
+            }
+            if (cmdline.Contains(" = "))
+            {
+                flag = 0;
+               
+                    Font f = new Font("Arial", 14);
+                    g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(0, ypos));
+                
+            }
+            if (!commandlist.Contains(split_command[0]) && cmdline.Contains('(') && cmdline.Contains(')'))
+            {
+                flag = 0;
+
+                Font f = new Font("Arial", 14);
+                g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(0, ypos));
+
+            }
+            
 
             try
             {
@@ -55,7 +98,7 @@ namespace GDI__Assignment_ASE
                     if (split_command[0] == "circle")
                     {
                         int total_ele = split_command.Count();
-                        if (total_ele == 2 && int.TryParse(split_command[1], out _))
+                        if (total_ele == 2)
                         {
                             Font f = new Font("Arial", 14);
                             g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(0, ypos));
@@ -70,7 +113,7 @@ namespace GDI__Assignment_ASE
                     if (split_command[0] == "rectangle" || split_command[0] == "square")
                     {
                         int total_ele = split_command.Count();
-                        if (total_ele == 3 && int.TryParse(split_command[1], out _) && int.TryParse(split_command[2], out _))
+                        if (total_ele == 3)
                         {
                             Font f = new Font("Arial", 14);
                             g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(0, ypos));
@@ -171,10 +214,12 @@ namespace GDI__Assignment_ASE
                         }
                     }
                 }
-                else
-                {
+                else if (flag == 1)
+                {    
                     throw new Not_a_valid_command_exception(g, ypos);
                 }
+                
+                
             }
             catch
             {

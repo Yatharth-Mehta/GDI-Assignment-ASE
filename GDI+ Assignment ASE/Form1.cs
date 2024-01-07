@@ -110,7 +110,7 @@ namespace GDI__Assignment_ASE
             }
             else
             {
-                sc.check(singleline.Text, g,50);
+                sc.check(singleline.Text, g,0);
             }
         }
         private void Form1_Load(object sender, EventArgs e)

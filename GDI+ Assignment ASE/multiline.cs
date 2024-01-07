@@ -60,6 +60,22 @@ namespace GDI__Assignment_ASE
             commandlist.Add("drawto");
             commandlist.Add("clear");
 
+            List<string> commandlist_2 = new List<string>();
+            commandlist_2.Add("circle");
+            commandlist_2.Add("rectangle");
+            commandlist_2.Add("triangle");
+            commandlist_2.Add("square");
+            commandlist_2.Add("drawto");
+            commandlist_2.Add("clear");
+            commandlist_2.Add("if");
+            commandlist_2.Add("while");
+            commandlist_2.Add("method");
+            commandlist_2.Add("endif");
+            commandlist_2.Add("endloop");
+            commandlist_2.Add("endmethod");
+            commandlist_2.Add("reset");
+            commandlist_2.Add("print");
+
             String[] lines = code.Split('\n');
 
 
@@ -69,8 +85,104 @@ namespace GDI__Assignment_ASE
                 String pattern = @"^([a-zA-Z_]\w*)\(([\w,]+)\)?$";
                 Match m = Regex.Match(split_command[0].Trim(), pattern);
 
-                // Shape Drawing Condition ----------------------------------------------------------------------
 
+                // Variable Creation ----------------------------------------------------------------------
+
+
+                if (split_command.Contains("="))
+                {
+                    vars.Add(split_command[0]);
+                    values.Add(split_command[2]);
+                    commandlist_2.Add(split_command[0]);
+
+                }
+
+
+                // Method Creation ----------------------------------------------------------------------
+
+
+                if (split_command[0] == "method")
+                {
+                    if (split_command[1].Contains('(') && split_command[1].Contains(')'))
+                    {
+
+                        String[] method_name = split_command[1].Trim().Split('(', ')');
+                        String[] parameters = method_name[1].Trim().Split(',');
+                        methods.Add(method_name[0] + "()");
+                        commandlist_2.Add(method_name[0] + "()");
+                        if (parameters == null)
+                        {
+                            for (int j = i + 1; j < lines.Length; j++)
+                            {
+                                if (lines[j].Trim() == "endmethod")
+                                {
+                                    i = j; break;
+                                }
+                                else
+                                {
+                                    method_commands.Add(lines[j]);
+                                }
+                            }
+                        }
+                        else
+                        {
+                            for (int j = 0; j < parameters.Length; j++)
+                            {
+                                meth_vars.Add(parameters[j]);
+                            }
+                            for (int j = i + 1; j < lines.Length; j++)
+                            {
+                                if (lines[j].Trim() == "endmethod")
+                                {
+                                    i = j; break;
+                                }
+                                else
+                                {
+                                    method_commands.Add(lines[j]);
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        try
+                        {
+                            throw new method_exception(g, 0);
+                        }
+                        catch { }
+                        break;
+                    }
+                }
+
+
+                else if (m.Success)
+                {
+                    String[] split_call = split_command[0].Trim().Split('(', ')');
+                    String[] par = split_call[1].Split(',');
+                    for (int j = 0; j < par.Length; j++)
+                    {
+                        meth_values.Add(par[j]);
+
+                    }
+
+                    for (int j = 0; j < method_commands.Count(); j++)
+                    {
+                        method_calling_with_parametres mc = new method_calling_with_parametres(method_commands[j], g, fillvalue, meth_vars, meth_values);
+                        mc.cmds();
+                    }
+                }
+
+                if (methods.Contains(split_command[0]))
+                {
+                    for (int j = 0; j < method_commands.Count(); j++)
+                    {
+                        method_calling mc = new method_calling(method_commands[j], g, fillvalue, vars, values);
+                        mc.cmds();
+                    }
+                }
+
+
+                // Shape Drawing Condition ----------------------------------------------------------------------
 
                 if (commandlist.Contains(split_command[0]))
                 {
@@ -175,24 +287,10 @@ namespace GDI__Assignment_ASE
                 }
 
 
-
-
-                // Variable Creation ----------------------------------------------------------------------
-
-
-                else if (split_command.Contains("="))
-                {
-                    vars.Add(split_command[0]);
-                    values.Add(split_command[2]);
-
-                }
-
-
-
                 // Print Condition ----------------------------------------------------------------------
 
 
-                else if (split_command[0].Equals("print"))
+                if (split_command[0].Equals("print"))
                 {
                     if (split_command.Length == 2 && vars.Contains(split_command[1]))
                     {
@@ -242,7 +340,7 @@ namespace GDI__Assignment_ASE
                 // Increament/Decreament Condition ----------------------------------------------------------------------
 
 
-                else if (vars.Contains(split_command[0]) && split_command[1] == "=" && (split_command[2] == split_command[0]))
+                if (vars.Contains(split_command[0]) && split_command[1] == "=" && (split_command[2] == split_command[0]))
                 {
                     variables_operation vo = new variables_operation(values, vars);
                     int element = vars.IndexOf(split_command[2]);
@@ -254,7 +352,7 @@ namespace GDI__Assignment_ASE
                 // If Condition ----------------------------------------------------------------------
 
 
-                else if (split_command[0] == "if")
+                if (split_command[0] == "if")
                 {
                     if_condition ifc = new if_condition(g, split_command[2]);
                     String valid = ifc.if_statement();
@@ -262,7 +360,7 @@ namespace GDI__Assignment_ASE
                     {
                         try
                         {
-                            throw new if_exception(g,0);
+                            throw new if_exception(g, 0);
                         }
                         catch { }
                         break;
@@ -557,7 +655,7 @@ namespace GDI__Assignment_ASE
                 // While Loop ----------------------------------------------------------------------
 
 
-                else if (split_command[0] == "while")
+                if (split_command[0] == "while")
                 {
                     while_loop wl = new while_loop(split_command[2]);
                     String condition = wl.validation();
@@ -730,106 +828,24 @@ namespace GDI__Assignment_ASE
                                 }
                             }
                         }
+
                     }
+
                 }
-
-
-
-                // Method Creation ----------------------------------------------------------------------
-
-
-                else if (split_command[0] == "method")
+/*
+                if (commandlist_2.Contains(split_command[0]) == false)
                 {
-                    if (split_command[1].Contains('(') && split_command[1].Contains(')'))
-                    {
 
-                        String[] method_name = split_command[1].Trim().Split('(', ')');
-                        String[] parameters = method_name[1].Trim().Split(',');
-                        methods.Add(method_name[0] + "()");
-                        if (parameters == null)
-                        {
-                            for (int j = i + 1; j < lines.Length; j++)
-                            {
-                                if (lines[j].Trim() == "endmethod")
-                                {
-                                    i = j; break;
-                                }
-                                else
-                                {
-                                    method_commands.Add(lines[j]);
-                                }
-                            }
-                        }
-                        else
-                        {
-                            for (int j = 0; j < parameters.Length; j++)
-                            {
-                                meth_vars.Add(parameters[j]);
-                            }
-                            for (int j = i + 1; j < lines.Length; j++)
-                            {
-                                if (lines[j].Trim() == "endmethod")
-                                {
-                                    i = j; break;
-                                }
-                                else
-                                {
-                                    method_commands.Add(lines[j]);
-                                }
-                            }
-                        }
-                    }
-                    else
-                    {
-                        try
-                        {
-                            throw new method_exception(g,0);
-                        }
-                        catch { }
-                        break;
-                    }
-                }
-
-
-                else if (m.Success)
-                {
-                    String[] split_call = split_command[0].Trim().Split('(', ')');
-                    String[] par = split_call[1].Split(',');
-                    for (int j = 0; j < par.Length; j++)
-                    {
-                        meth_values.Add(par[j]);
-
-                    }
-
-                    for (int j = 0; j < method_commands.Count(); j++)
-                    {
-                        method_calling_with_parametres mc = new method_calling_with_parametres(method_commands[j], g, fillvalue, meth_vars, meth_values);
-                        mc.cmds();
-                    }
-                }
-
-                else if (methods.Contains(split_command[0]))
-                {
-                    for (int j = 0; j < method_commands.Count(); j++)
-                    {
-                        method_calling mc = new method_calling(method_commands[j], g, fillvalue, vars, values);
-                        mc.cmds();
-                    }
-                }
-
-                else if (lines[i] != "endif" || lines[i] != "endloop" || lines[i] != "endmethod")
-                {
                     try
                     {
-
                         throw new Invalid_command_in_multiline(g, i);
-                        //                        throw new Not_a_valid_command_exception(g);
                     }
                     catch { }
                     break;
-                }
 
-            }//for loop end
+                }*/
+
+                }//for loop end
         }
     }
 }
