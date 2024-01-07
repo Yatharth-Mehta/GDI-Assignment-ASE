@@ -34,7 +34,7 @@ namespace GDI__Assignment_ASE
             this.command = command;
         }
         /// <summary>
-        /// 
+        /// This function will help in iteration of the while loop.
         /// </summary>
         public void iterate()
         {
