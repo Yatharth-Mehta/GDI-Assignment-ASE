@@ -23,7 +23,7 @@ namespace GDI__Assignment_ASE.Properties
         /// <param name="g">It is the graphic variable that will be used to pass to the shapes class in order for them to draw the shape</param>
         /// <param name="cmd">It is the command that is entered which will determine what drawing has to be done</param>
         /// <param name="fillvalue">It is fill value to know whether to make the shape filled or just with outline.</param>
-        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentNullException">An exception to be thrown if the graphic variable is null</exception></exception>
         public void draw(Graphics g ,String cmd,String fillvalue)
         {
             if (g is null)
