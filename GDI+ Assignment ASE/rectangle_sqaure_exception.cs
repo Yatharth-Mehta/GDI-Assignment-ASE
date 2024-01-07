@@ -7,9 +7,15 @@ using System.Threading.Tasks;
 
 namespace GDI__Assignment_ASE
 {
+    /// <summary>
+    /// This is an custom exception class for rectangle and sqaure command.
+    /// </summary>
     public class rectangle_sqaure_exception : Exception
     {
-        public rectangle_sqaure_exception(Graphics g,int ypos)
+        /// <param name="g">Graphic element for drawing string on canvas</param>
+        /// <param name="ypos">The position of the text on Y-axis</param>
+        /// <exception cref="ArgumentNullException">An exception to be thrown if the graphic variable is null</exception>
+        public rectangle_sqaure_exception(Graphics g, int ypos)
         {
             if (g is null)
             {
