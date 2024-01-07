@@ -22,7 +22,7 @@ namespace GDI__Assignment_ASE
         /// </summary>
         /// <param name="g">The graphics element</param>
         /// <param name="condition">The if condition to be checked</param>
-        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentNullException">An exception to be thrown if the graphic variable is null</exception>
         public if_condition(Graphics g, String condition)
         {
             if (g is null)
