@@ -7,10 +7,19 @@ using System.Xml.Linq;
 
 namespace GDI__Assignment_ASE
 {
+    /// <summary>
+    /// This calss will perform the actions on created variables
+    /// </summary>
     public class variables_operation
     {
         List<String> values;
         List<String> vars;
+        /// <summary>
+        /// This constructor will store the values locally.
+        /// </summary>
+        /// <param name="values">The value of the variable</param>
+        /// <param name="vars">The variable on which the operation is to be performed</param>
+        /// <exception cref="ArgumentNullException">An exception to be thrown if the graphic variable is null</exception>
         public variables_operation(List<String> values , List<String> vars)
         {
             if (values is null)
@@ -20,7 +29,12 @@ namespace GDI__Assignment_ASE
             this.values = values;
             this.vars = vars;
         }
-        public String new_value(String operation)
+        /// <summary>
+        /// This class will perform the arithmetic operations on the variable.
+        /// </summary>
+        /// <param name="operation">This is the operation the user wants to perform on the variable</param>
+        /// <returns>This will return the upadated value in String format</returns>
+        public void new_value(String operation)
         {
             String[] split_command = operation.Split(' ');
             int element = vars.IndexOf(split_command[2]);
