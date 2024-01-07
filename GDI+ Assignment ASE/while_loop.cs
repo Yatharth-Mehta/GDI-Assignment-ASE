@@ -17,7 +17,8 @@ namespace GDI__Assignment_ASE
         /// This constructor will take the condition and check whether it's null or not
         /// </summary>
         /// <param name="condition">The condtion passed in the while loop</param>
-        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentNullException">An exception to be thrown if the graphic variable is null</exception>
+
         public while_loop(string condition)
         {
             if (condition is null)
