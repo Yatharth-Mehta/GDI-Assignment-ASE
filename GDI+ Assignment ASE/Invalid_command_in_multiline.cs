@@ -17,7 +17,7 @@ namespace GDI__Assignment_ASE
         /// This constructor will throw an exception by drawing an error string message on the canvas.
         /// </summary>
         /// <param name="g">Graphic element for drawing string on canvas</param>
-        /// <param name="ypos">The position of the text on Y-axis</param>
+        /// <param name="line">Gives the line number where the exception occurs</param>
         /// <exception cref="ArgumentNullException">An exception to be thrown if the graphic variable is null</exception>
         public Invalid_command_in_multiline(Graphics g , int line)
         {
