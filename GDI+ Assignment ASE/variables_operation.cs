@@ -34,7 +34,7 @@ namespace GDI__Assignment_ASE
         /// </summary>
         /// <param name="operation">This is the operation the user wants to perform on the variable</param>
         /// <returns>This will return the upadated value in String format</returns>
-        public void new_value(String operation)
+        public String new_value(String operation)
         {
             String[] split_command = operation.Split(' ');
             int element = vars.IndexOf(split_command[2]);
