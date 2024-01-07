@@ -9,8 +9,8 @@ using System.Threading.Tasks;
 namespace GDI__Assignment_ASE.Tests
 {
     /// <summary>
-    /// This is a Unit test for if condition calling class which is used to check the if condition that user
-    /// passes.
+    /// This is a Unit test for if condition calling class which is used to call the action class for commands inside
+    /// If block.
     /// </summary>
     [TestClass()]
     public class if_condition_callingTests
