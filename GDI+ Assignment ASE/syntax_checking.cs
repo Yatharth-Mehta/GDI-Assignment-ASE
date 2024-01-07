@@ -71,10 +71,10 @@ namespace GDI__Assignment_ASE
             if (cmdline.Contains(" = "))
             {
                 flag = 0;
-               
-                    Font f = new Font("Arial", 14);
-                    g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(0, ypos));
-                
+
+                Font f = new Font("Arial", 14);
+                g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(0, ypos));
+
             }
             if (!commandlist.Contains(split_command[0]) && cmdline.Contains('(') && cmdline.Contains(')'))
             {
@@ -84,16 +84,13 @@ namespace GDI__Assignment_ASE
                 g.DrawString("The Syntax is correct", f, Brushes.Red, new Point(0, ypos));
 
             }
-            
+
 
             try
             {
                 if (commandlist.Contains(split_command[0]))
                 {
-                    if (cmdline == "")
-                    {
-                        throw new cmdline_empty_exception(g, ypos);
-                    }
+                  
 
                     if (split_command[0] == "circle")
                     {
@@ -215,11 +212,11 @@ namespace GDI__Assignment_ASE
                     }
                 }
                 else if (flag == 1)
-                {    
+                {
                     throw new Not_a_valid_command_exception(g, ypos);
                 }
-                
-                
+
+
             }
             catch
             {
