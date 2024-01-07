@@ -8,9 +8,16 @@ using System.Threading.Tasks;
 
 namespace GDI__Assignment_ASE.Tests
 {
+    /// <summary>
+    /// This is a Unit test for if condition calling class which is used to check the if condition that user
+    /// passes.
+    /// </summary>
     [TestClass()]
     public class if_condition_callingTests
     {
+        /// <summary>
+        /// In this method the if_condition_calling class is called and the Graphic object is passed null to create an exception.
+        /// </summary>
         [TestMethod()]
         [ExpectedException(typeof(ArgumentNullException), "The Exception not found")]
         public void cmdsTest()
