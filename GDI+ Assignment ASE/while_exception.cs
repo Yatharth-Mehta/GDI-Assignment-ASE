@@ -7,8 +7,14 @@ using System.Threading.Tasks;
 
 namespace GDI__Assignment_ASE
 {
+    /// <summary>
+    /// This is an custom exception class for while command.
+    /// </summary>
     public class while_exception : Exception
     {
+        /// <param name="g">Graphic element for drawing string on canvas</param>
+        /// <param name="ypos">The position of the text on Y-axis</param>
+        /// <exception cref="ArgumentNullException">An exception to be thrown if the graphic variable is null</exception>
         public while_exception(Graphics g, int ypos)
         {
             if (g is null)
