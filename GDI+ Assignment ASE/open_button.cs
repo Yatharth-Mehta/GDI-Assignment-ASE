@@ -16,7 +16,8 @@ namespace GDI__Assignment_ASE
         /// This class will check whether the object sender is null and will throw an exception.
         /// </summary>
         /// <param name="sender">An object passed through the form</param>
-        /// <exception cref="ArgumentNullException"></exception>
+        /// <exception cref="ArgumentNullException">An exception to be thrown if the graphic variable is null</exception>
+
         public void open(object sender)
         {
             if (sender is null)
