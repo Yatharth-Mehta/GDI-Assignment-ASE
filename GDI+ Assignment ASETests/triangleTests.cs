@@ -8,9 +8,16 @@ using System.Threading.Tasks;
 
 namespace GDI__Assignment_ASE.Tests
 {
+    /// <summary>
+    /// This is a Unit test for triangle class which is used to draw a triangle when user
+    /// passes a valid triangle command.
+    /// </summary>
     [TestClass()]
     public class triangleTests
     {
+        /// <summary>
+        /// In this method triangle class is called and the Graphic object is passed null to create an exception.
+        /// </summary>
         [TestMethod()]
         [ExpectedException(typeof(ArgumentNullException), "The Exception not found")]
         public void drawTest()
