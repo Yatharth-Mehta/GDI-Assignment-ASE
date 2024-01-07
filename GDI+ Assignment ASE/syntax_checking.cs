@@ -7,8 +7,19 @@ using System.Threading.Tasks;
 
 namespace GDI__Assignment_ASE
 {
+    /// <summary>
+    /// This class is for the syntax checking , whenever the user will click the syntax button this class will be called.
+    /// </summary>
     public class syntax_checking
     {
+        /// <summary>
+        /// This method will contain a List and will check whether the command is in the list and will tell that the command
+        /// is correct is it is or will throw appropriate custom exceptions.
+        /// </summary>
+        /// <param name="command">The command passed by user.</param>
+        /// <param name="g">Graphic element for drawing string on canvas</param>
+        /// <param name="ypos">The position of the text on Y-axis</param>
+        /// <returns>It will return a flag value of 1.</returns>
         public int check(String command, Graphics g, int ypos)
         {
             int flag = 1;
