@@ -82,7 +82,14 @@ namespace GDI__Assignment_ASE
 
             Refresh();
         }
-
+        /// <summary>
+        /// This method will be activated when the user clicks on syntax button
+        /// It will take all the lines from commandline or multiline and
+        /// will pass it to syntax_checking.cs to check whether the 
+        /// syntax of that command is correct or not.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void syntax_Click(object sender, EventArgs e)
         {
             
@@ -118,6 +125,13 @@ namespace GDI__Assignment_ASE
 
         }
 
+        /// <summary>
+        /// This method is activatedd when open file button is clicked.
+        /// It will open a file explorer to open a text file and load it
+        /// in the mulitine text box
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void openfile_Click(object sender, EventArgs e)
         {
             open_button op = new open_button();
@@ -131,6 +145,12 @@ namespace GDI__Assignment_ASE
             }
         }
 
+        /// <summary>
+        /// This method is activatedd when save button is clicked.
+        /// It will open a file explorer to save a text file with all the text in multiline textbox
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void savebutton_Click(object sender, EventArgs e)
         {
             save_button sb = new save_button(sender);
@@ -142,6 +162,12 @@ namespace GDI__Assignment_ASE
             }
         }
 
+        /// <summary>
+        /// This method is activatedd when reset button is clicked.
+        /// It reset the entire form and all it's parametres.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void reset_Click(object sender, EventArgs e)
         {
             drawingcanvas.Image = new Bitmap(drawingcanvas.Width, drawingcanvas.Height);
