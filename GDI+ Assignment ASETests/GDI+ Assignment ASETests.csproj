@@ -80,6 +80,7 @@
     <Compile Include="resetTests.cs" />
     <Compile Include="reset_exceptionTests.cs" />
     <Compile Include="save_buttonTests.cs" />
+    <Compile Include="syntax_checkingTests.cs" />
     <Compile Include="triangleTests.cs" />
     <Compile Include="triangle_exceptionTests.cs" />
     <Compile Include="variables_operationTests.cs" />

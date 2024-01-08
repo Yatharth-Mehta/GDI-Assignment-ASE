@@ -22,6 +22,11 @@ namespace GDI__Assignment_ASE
         /// <returns>It will return the flag value.</returns>
         public int check(String command, Graphics g, int ypos)
         {
+
+            if (g is null)
+            {
+                throw new ArgumentNullException(nameof(g));
+            }
             int flag = 1;
             String cmdline = command;
             cmdline = cmdline.ToLower();
