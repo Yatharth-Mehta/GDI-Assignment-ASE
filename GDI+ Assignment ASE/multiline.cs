@@ -657,6 +657,7 @@ namespace GDI__Assignment_ASE
 
                 if (split_command[0] == "while")
                 {
+                    String itr = lines[i];
                     while_loop wl = new while_loop(split_command[2]);
                     String condition = wl.validation();
 
@@ -685,10 +686,14 @@ namespace GDI__Assignment_ASE
                                     {
                                         if (lines[j].Trim() == "endloop")
                                         {
-                                            while_iteration wi = new while_iteration(lines[i], g, fillvalue);
-                                            wi.iterate();
+
+                                            multiline ml = new multiline(itr, g, fillvalue);
+                                            ml.multiline_main();
                                             i = j;
-                                            break;
+                                        }
+                                        if (lines[j].StartsWith("while"))
+                                        {
+                                            j++;
                                         }
                                         else
                                         {
@@ -711,9 +716,10 @@ namespace GDI__Assignment_ASE
                                     {
                                         if (lines[j].Trim() == "endloop")
                                         {
-                                            while_iteration wi = new while_iteration(lines[i], g, fillvalue);
-                                            wi.iterate();
-                                            i = j; break;
+
+                                            multiline ml = new multiline(itr, g, fillvalue);
+                                            ml.multiline_main();
+                                            i = j; 
                                         }
                                         else
                                         {
@@ -734,9 +740,12 @@ namespace GDI__Assignment_ASE
                                     {
                                         if (lines[j].Trim() == "endloop")
                                         {
-                                            while_iteration wi = new while_iteration(split_command[0] + " " + split_command[1] + " " + split_command[2] + " " + split_command[3], g, fillvalue);
-                                            wi.iterate();
-                                            i = j; break;
+
+                                            multiline ml = new multiline(itr, g, fillvalue);
+                                            ml.multiline_main();
+                                            /*Font f = new Font("Arial", 14);
+                                            g.DrawString("while " + split_command[1] + " " + split_command[2] + " " + split_command[3], f, Brushes.Red, new Point(50, 50));*/
+                                            i = j; 
                                         }
                                         else
                                         {
@@ -757,9 +766,10 @@ namespace GDI__Assignment_ASE
                                     {
                                         if (lines[j].Trim() == "endloop")
                                         {
-                                            while_iteration wi = new while_iteration(lines[i], g, fillvalue);
-                                            wi.iterate();
-                                            i = j; break;
+
+                                            multiline ml = new multiline(itr, g, fillvalue);
+                                            ml.multiline_main();
+                                            i = j; 
                                         }
                                         else
                                         {
@@ -780,9 +790,10 @@ namespace GDI__Assignment_ASE
                                     {
                                         if (lines[j].Trim() == "endloop")
                                         {
-                                            while_iteration wi = new while_iteration(lines[i], g, fillvalue);
-                                            wi.iterate();
-                                            i = j; break;
+
+                                            multiline ml = new multiline(itr, g, fillvalue);
+                                            ml.multiline_main();
+                                            i = j; 
                                         }
                                         else
                                         {
@@ -803,9 +814,10 @@ namespace GDI__Assignment_ASE
                                     {
                                         if (lines[j].Trim() == "endloop")
                                         {
-                                            while_iteration wi = new while_iteration(lines[i], g, fillvalue);
-                                            wi.iterate();
-                                            i = j; break;
+
+                                            multiline ml = new multiline(itr, g, fillvalue);
+                                            ml.multiline_main();
+                                            i = j;
                                         }
                                         else
                                         {
